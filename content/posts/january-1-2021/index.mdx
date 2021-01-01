@@ -1,0 +1,52 @@
+---
+title: Jan 1 - Daily Programming Diary
+date: 2021-01-01
+tags:
+  - Diary
+  - Programming
+---
+
+##### 11:50
+Woke up on time today (really!), and I thought *"It's new year, let's build some habits."*. I went ahead and completed the blog on Arch installation. Feels like a milestone to be honest. I mean it's great to have someone who's constantly asking you to complete a task.
+
+I also decided to go ahead and start this blog as my daily programming journal. I think only I can hold myself accountable.
+
+##### 12:50
+Installed Go. Wow the internet seems to want me to work today. xD
+
+#### 14:06
+Just completed the January Challenge [Day 1](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3589/).
+Althought the problem seemed a bit challenging, I used hash table to store the first element of each piece with the repective vector. When I encounter the first number of a piece in array, I fetch the array and compare till the piece finishes.
+
+```cpp
+bool canFormArray(vector<int>& arr, vector<vector<int>>& pieces) {
+        unordered_map< int, vector<int> > umap;
+        for(int i=0; i< pieces.size(); i++) {
+            umap[pieces[i][0]] = pieces[i];
+        }
+        
+        for(int i=0; i<arr.size();) {
+            if (umap.find(arr[i]) == umap.end()) {   
+                return false;
+            } else {
+                for(int j=0; j<umap[arr[i]].size(); j++) {
+                    if(arr[i+j] == umap[arr[i]][j]) {
+                        
+                    } else {
+                        return false;
+                    }
+                }
+                i+=umap[arr[i]].size();
+            }
+        }
+        
+        
+        return true;
+    }
+```
+
+### EOD Checklist
+- [ ] Go
+- [ ] January Challenge
+- [ ] Codechef Long Challenge
+- [x] This blog 
