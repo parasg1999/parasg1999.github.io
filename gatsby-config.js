@@ -5,11 +5,13 @@ require(`dotenv`).config({
 module.exports = {
   siteMetadata: {
     siteTitle: 'Paras Gupta',
-    siteTitleAlt: `Paras Gupta`,
-    description:
+    siteTitleAlt: `Paras Gupta - Blog`,
+    siteDescription:
       "Personal Blog - Paras Gupta",
-    url: "https://parasg1999.github.io", // No trailing slash allowed!
+    siteUrl: "https://parasg1999.github.io", // No trailing slash allowed!
     twitterUsername: "@parasg1999",
+    author: "Paras Gupta",
+    siteLanguage: "en"
   },
   plugins: [
     {
