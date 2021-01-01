@@ -79,7 +79,7 @@
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-0bddcc949f54af857254.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/jan-1-daily-programming-diary/page-data.json>; rel=preload; as=fetch; crossorigin
-/curses-counter-curses-and-more
+/markdown-example
   Link: </webpack-runtime-cfc6628e2d55a9264455.js>; rel=preload; as=script
   Link: </framework-9fe058f4359556db0d38.js>; rel=preload; as=script
   Link: </f0e45107-14de746ffa42a2a3272a.js>; rel=preload; as=script
@@ -88,17 +88,7 @@
   Link: </aed2e917f30c051bccba91aa15989a75fd0bd633-4eeffd7d68e041ec8fdb.js>; rel=preload; as=script
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-0bddcc949f54af857254.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/curses-counter-curses-and-more/page-data.json>; rel=preload; as=fetch; crossorigin
-/harry-potter-and-the-half-blood-prince
-  Link: </webpack-runtime-cfc6628e2d55a9264455.js>; rel=preload; as=script
-  Link: </framework-9fe058f4359556db0d38.js>; rel=preload; as=script
-  Link: </f0e45107-14de746ffa42a2a3272a.js>; rel=preload; as=script
-  Link: </app-babbc39769e5823044fc.js>; rel=preload; as=script
-  Link: </styles-823ae8103e36ae8a7f9f.js>; rel=preload; as=script
-  Link: </aed2e917f30c051bccba91aa15989a75fd0bd633-4eeffd7d68e041ec8fdb.js>; rel=preload; as=script
-  Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-0bddcc949f54af857254.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/harry-potter-and-the-half-blood-prince/page-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/markdown-example/page-data.json>; rel=preload; as=fetch; crossorigin
 /about
   Link: </webpack-runtime-cfc6628e2d55a9264455.js>; rel=preload; as=script
   Link: </framework-9fe058f4359556db0d38.js>; rel=preload; as=script
@@ -119,7 +109,7 @@
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tag-query-tsx-b309d057a589e9a8b28d.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/tags/diary/page-data.json>; rel=preload; as=fetch; crossorigin
-/tags/highlight
+/tags/example
   Link: </webpack-runtime-cfc6628e2d55a9264455.js>; rel=preload; as=script
   Link: </framework-9fe058f4359556db0d38.js>; rel=preload; as=script
   Link: </f0e45107-14de746ffa42a2a3272a.js>; rel=preload; as=script
@@ -128,17 +118,7 @@
   Link: </aed2e917f30c051bccba91aa15989a75fd0bd633-4eeffd7d68e041ec8fdb.js>; rel=preload; as=script
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tag-query-tsx-b309d057a589e9a8b28d.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tags/highlight/page-data.json>; rel=preload; as=fetch; crossorigin
-/tags/novel
-  Link: </webpack-runtime-cfc6628e2d55a9264455.js>; rel=preload; as=script
-  Link: </framework-9fe058f4359556db0d38.js>; rel=preload; as=script
-  Link: </f0e45107-14de746ffa42a2a3272a.js>; rel=preload; as=script
-  Link: </app-babbc39769e5823044fc.js>; rel=preload; as=script
-  Link: </styles-823ae8103e36ae8a7f9f.js>; rel=preload; as=script
-  Link: </aed2e917f30c051bccba91aa15989a75fd0bd633-4eeffd7d68e041ec8fdb.js>; rel=preload; as=script
-  Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tag-query-tsx-b309d057a589e9a8b28d.js>; rel=preload; as=script
-  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
-  Link: </page-data/tags/novel/page-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/tags/example/page-data.json>; rel=preload; as=fetch; crossorigin
 /tags/programming
   Link: </webpack-runtime-cfc6628e2d55a9264455.js>; rel=preload; as=script
   Link: </framework-9fe058f4359556db0d38.js>; rel=preload; as=script
