@@ -6,6 +6,10 @@ module.exports = {
   siteMetadata: {
     siteTitle: 'Paras Gupta',
     siteTitleAlt: `Paras Gupta`,
+    description:
+      "Personal Blog - Paras Gupta",
+    url: "https://parasg1999.github.io", // No trailing slash allowed!
+    twitterUsername: "@parasg1999",
   },
   plugins: [
     {
@@ -44,9 +48,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
-        short_name: `minimal-blog`,
-        description: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and code highlighting.`,
+        name: `paras-gupta-blog`,
+        short_name: `paras-blog`,
+        description: `Personal blog for Paras Gupta.`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#6B46C1`,
