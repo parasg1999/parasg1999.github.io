@@ -48,27 +48,28 @@ Have been banging my head around the 5th problem on codechef for a while nnow an
 Well, on the Leetcode side, I completed the challenge [Day 2](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3590/) pretty quickly today. Had to find the corresponding nodes in a cloned tree, so it wasn't really difficult.
 
 ```cpp
-TreeNode* getTargetCopy(TreeNode* original, TreeNode* cloned, TreeNode* target) {
-        if(original == NULL) return NULL;
-        
-        if(original == target) {
-            return cloned;
-        }
-        
-        TreeNode* left = getTargetCopy(original->left, cloned->left, target);
-        
-        if(left != NULL) {
-            return left;
-        }
-        
-        TreeNode* right = getTargetCopy(original->right, cloned->right, target);
-        
-        if(right != NULL) {
-            return right;
-        }
-        
+TreeNode *getTargetCopy(TreeNode *original, TreeNode *cloned, TreeNode *target) {
+    if (original == NULL)
         return NULL;
+
+    if (original == target) {
+        return cloned;
     }
+
+    TreeNode *left = getTargetCopy(original->left, cloned->left, target);
+
+    if (left != NULL) {
+        return left;
+    }
+
+    TreeNode *right = getTargetCopy(original->right, cloned->right, target);
+
+    if (right != NULL) {
+        return right;
+    }
+
+    return NULL;
+}
 ```
 
 Time complexity is O(n) where n is the number of nodes. Space complexity is O(n) if the tree is like a linked list.

@@ -6,12 +6,13 @@ module.exports = {
   siteMetadata: {
     siteTitle: 'Paras Gupta',
     siteTitleAlt: `Paras Gupta - Blog`,
-    siteDescription:
-      "Personal Blog - Paras Gupta",
+    siteHeadline: "Paras Gupta - Blog",
     siteUrl: "https://parasg1999.github.io", // No trailing slash allowed!
-    twitterUsername: "@parasg1999",
+    siteDescription: "Personal Blog - Paras Gupta",
+    siteLanguage: "en",
+    siteImage: "/banner.png",
     author: "Paras Gupta",
-    siteLanguage: "en"
+    twitterUsername: "@parasg1999",
   },
   plugins: [
     {

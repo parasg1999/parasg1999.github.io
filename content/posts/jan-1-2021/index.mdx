@@ -19,29 +19,28 @@ Just completed the Leetcode January Challenge [Day 1](https://leetcode.com/explo
 Althought the problem seemed a bit challenging, I used hash table to store the first element of each piece with the repective vector. When I encounter the first number of a piece in array, I fetch the array and compare till the piece finishes.
 
 ```cpp
-bool canFormArray(vector<int>& arr, vector<vector<int>>& pieces) {
-        unordered_map< int, vector<int> > umap;
-        for(int i=0; i< pieces.size(); i++) {
-            umap[pieces[i][0]] = pieces[i];
-        }
-        
-        for(int i=0; i<arr.size();) {
-            if (umap.find(arr[i]) == umap.end()) {   
-                return false;
-            } else {
-                for(int j=0; j<umap[arr[i]].size(); j++) {
-                    if(arr[i+j] == umap[arr[i]][j]) {
-                        
-                    } else {
-                        return false;
-                    }
-                }
-                i+=umap[arr[i]].size();
-            }
-        }
-        
-        return true;
+bool canFormArray(vector<int> &arr, vector<vector<int>> &pieces) {
+    unordered_map<int, vector<int>> umap;
+    for (int i = 0; i < pieces.size(); i++) {
+        umap[pieces[i][0]] = pieces[i];
     }
+
+    for (int i = 0; i < arr.size();) {
+        if (umap.find(arr[i]) == umap.end()) {
+            return false;
+        } else {
+            for (int j = 0; j < umap[arr[i]].size(); j++) {
+                if (arr[i + j] == umap[arr[i]][j]) { }
+                else {
+                    return false;
+                }
+            }
+            i += umap[arr[i]].size();
+        }
+    }
+
+    return true;
+}
 ```
 The time complexity is O(n) even with the nested loop, and the space complexity is also O(n).
 
