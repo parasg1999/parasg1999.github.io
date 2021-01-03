@@ -1,10 +1,19 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
+import "./404.scss"
 
-const Footer = () => {
+const FourOhFourPage = () => {
+  const redirect = () => {
+    window.location.replace('/');
+  }
+
   return (
-    <p>Pretty sure this is not what you're looking for.</p>
-    )
+    <div role="button" className="fourOhFour">
+      404
+      <br />
+      <button onClick={redirect}>Go Home</button>
+    </div>
+  )
 }
 
-export default Footer
+export default FourOhFourPage;
