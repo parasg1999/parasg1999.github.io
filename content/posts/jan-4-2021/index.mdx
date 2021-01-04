@@ -1,0 +1,154 @@
+---
+title: Jan 4 - Daily Programming Diary
+date: 2021-01-04
+tags:
+  - Diary
+  - Programming
+---
+
+##### 2:30
+Can't sleep so I thought I'll put some work into the GitHub profile ReadMe. 
+
+##### 4:00
+So what started to be GitHub ReadMe journey turned out to be a Go tutorial. Go really has a lot of inbuilt libraries. I'm still trying to wrap my head around the syntax of the language but looks like the [gorilla/mux](https://github.com/gorilla/mux) and [gin](https://github.com/gin-gonic/gin) packages is fairly popular with the community.
+While gmux(?) is used by almost 15k projects and gin by 9.6k at the time of writing, gin claims to be 40 times faster than other Go frameworks. That's wild!
+
+##### 5:00
+Was confused about what to do, so started Leetcode December Challenge [Day 1](https://leetcode.com/explore/featured/card/december-leetcoding-challenge/569/week-1-december-1st-december-7th/3551/). The question itself is pretty straightforward. Just have to calculate the maximum depth of binary tree.  
+Using a variable to keep track of current depth and one for max depth.
+
+```cpp:title=maximum-depth-of-binary-tree.cpp
+int currMax = 0, curr = 0;
+int maxDepth(TreeNode *root) {
+    if (root == NULL) {
+        return 0;
+    } else {
+        curr++;
+        currMax = max(curr, currMax);
+    }
+
+    if (root->left) {
+        maxDepth(root->left);
+        curr--;
+    }
+
+    if (root->right) {
+        maxDepth(root->right);
+        curr--;
+    }
+
+    return currMax;
+}
+```
+Time Complexity O(n) where n is the number of nodes in the tree. O(h) space complexity where h is the height of the tree.
+
+##### 5:30
+Leetcode December Challenge [Day 3](https://leetcode.com/explore/featured/card/december-leetcoding-challenge/569/week-1-december-1st-december-7th/3553/). The crux was to convert a BST into a LinkedList with inorder traversal. 
+
+```cpp:title=increasing-order-search-tree.cpp
+TreeNode *head = new TreeNode();
+TreeNode *ans = head;
+TreeNode *increasingBST(TreeNode *root) {
+    if (!root) return NULL;
+
+    increasingBST(root->left);
+    root->left = NULL;
+    head->right = root;
+    head = root;
+
+    increasingBST(root->right);
+    return ans->right;
+}
+```
+Time Complexity O(n) where n is the number of nodes in the tree. O(h) space complexity where h is the height of the tree.
+
+> Break? Sleep! *_the drake meme_ 😂🤷‍♂️
+
+##### 12:30
+Back on Leetcode December Challenge [Day 11](https://leetcode.com/explore/featured/card/december-leetcoding-challenge/570/week-2-december-8th-december-14th/3562/). The crux was to remove duplicate elements from a sorted array keeping at most 2 copies of an element.  
+Two pointers approach, `read` and `write` pointers. Then check the frequency of current element and write according to that.
+
+```cpp:title=remove-duplicates-from-sorted-array-ii.cpp
+int removeDuplicates(vector<int> &nums) {
+    int num = INT_MIN;
+    int freq = 0;
+    int write = 0;
+    for (int read = 0; read < nums.size(); read++) {
+        if (nums[read] == num) {
+            freq++;
+            if (freq <= 2) {
+                nums[write] = nums[read];
+                write++;
+            }
+        } else {
+            num = nums[read];
+            freq = 1;
+            nums[write] = nums[read];
+            write++;
+        }
+    }
+
+    return write;
+}
+```
+Time Complexity O(n) and space complexity O(1)
+
+##### 14:30
+TIme to do the Leetcode January Challenge [Day 4](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3592/). Merge two sorted lists. Since I have done this before, let's see the time it takes to actually code the solution. 
+Phew! Done. `7 minutes`.
+
+```cpp:title=merge-two-sorted-lists.cpp
+ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+    if (l1 == NULL) return l2;
+    if (l2 == NULL) return l1;
+
+    ListNode *head = new ListNode();
+    ListNode *ans = head;
+
+    while (l1 != NULL && l2 != NULL) {
+        if (l1->val < l2->val) {
+            head->next = l1;
+            l1 = l1->next;
+            head = head->next;
+        } else {
+            head->next = l2;
+            l2 = l2->next;
+            head = head->next;
+        }
+    }
+
+    if (l1 == NULL) {
+        head->next = l2;
+    } else {
+        head->next = l1;
+    }
+
+    return ans->next;
+}
+```
+Time complexity O(n+m) where n and m are the total number of nodes in the linked list 1 and 2 respectively. Space complexity O(1). 
+
+##### 15:45
+Worked on enabling the copy button that was bothering me for the last couple of days. Turns out, I had shadowed the file earlier and had some issues with that.  
+Also wanted tags for `C++` and `Go` files since most of the code I'm uploading is in those languages. Happy with the result.
+
+> Battery 6%, taking a break!
+
+##### 20:30
+Finally done with the [GitHub Profile ReadMe](https://github.com/parasg1999). So what started at the start of the day came to a halt at the end. Talk about things that take up your life! 😛
+
+##### 22:00
+Tried the ant problem on codechef. Ffor the first subtast where `number of lanes = 1`. Figured that the answer should be the product of ants on wither side of origin but is showing an error.  
+Let's see it tomorrow.
+
+##### 00:12
+Worked on the websites that Kshitija and Mansi are making and the day ends with that.
+
+> Adios!
+
+### EOD Checklist
+- [x] Go
+- [x] Leetcode January Challenge
+- [x] Codechef Long Challenge
+- [ ] Raahee
+- [x] This blog 

@@ -11,12 +11,12 @@ Starting late today. Don't know what to do so I'll just set up the 404 page for 
 
 ##### 14:40
 After an hour of searching for inspiration, I finally completed the 404 page and it looks awesome.  
-Now would be a good time to start today's Leetcode challenge. I read the question earlier and it has to deal with backtracking or something like that since the constraint is `1<=n<=15`.
+Now would be a good time to start today's Leetcode challenge, [Day 3](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3591/). I read the question earlier and it has to deal with backtracking or something like that since the constraint is `1<=n<=15`.
 
 ##### 15:00
 Okay, yeah! Backtracking it was. So what I did was checking the solution for all values that can be placed in the vector. Then if it executes till the end, then incrementing the count. Neat!
 
-```cpp
+```cpp:title=beautiful-arrangement.cpp
 int countArrangement(int n) {
     vector<bool> occupied(n + 1, false);
     int count = 0;
