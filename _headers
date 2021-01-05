@@ -64,6 +64,15 @@
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tags-query-tsx-35d09f4d1f6a70300fce.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/tags/page-data.json>; rel=preload; as=fetch; crossorigin
+/jan-5-daily-programming-diary
+  Link: </webpack-runtime-3757b5a577cb2faab03b.js>; rel=preload; as=script
+  Link: </framework-29ba174b433dc5858bed.js>; rel=preload; as=script
+  Link: </app-1ed5a0dc14852557525e.js>; rel=preload; as=script
+  Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </aed2e917f30c051bccba91aa15989a75fd0bd633-f4662af29be1ab441901.js>; rel=preload; as=script
+  Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-6737aa013d3c04e428fe.js>; rel=preload; as=script
+  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/jan-5-daily-programming-diary/page-data.json>; rel=preload; as=fetch; crossorigin
 /jan-4-daily-programming-diary
   Link: </webpack-runtime-3757b5a577cb2faab03b.js>; rel=preload; as=script
   Link: </framework-29ba174b433dc5858bed.js>; rel=preload; as=script
