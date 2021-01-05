@@ -1,0 +1,62 @@
+---
+title: Jan 4 - Daily Programming Diary
+date: 2021-01-05
+tags:
+  - Diary
+  - Programming
+---
+
+##### 12:30
+I completed the Question 5 [WIPL](https://www.codechef.com/JAN21C/problems/WIPL) on Codechef last night but was too tired to write here.
+
+The concept was to try and take minimum boxes first that can make a stack on `2*k` size and check if we can make individual stacks from those.  
+The solution can be found at [41276886](https://www.codechef.com/viewsolution/41276886).
+
+Also got 30 points in Question 6 [ANTSCHEF](https://www.codechef.com/JAN21C/problems/ANTSCHEF). Just had to use `long long` for the result from yesterday.
+
+##### 16:30
+Leetcode January Challenge [Day 5](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3593/). Starting now!  
+The question is pretty simple. Just have to check the next and prev values to ensure that current element is not duplicate. 
+
+```cpp:title=remove-duplicates-from-sorted-list-ii.cpp
+ListNode *deleteDuplicates(ListNode *head) {
+    if (!head) return head;
+
+    ListNode *ans = new ListNode(-1000);
+    ListNode *temp = ans;
+    int prev = -1000;
+    while (head->next != NULL) {
+        if (head->val != prev && head->val != head->next->val) {
+            ans->next = head;
+            ans = ans->next;
+        }
+
+        prev = head->val;
+        head = head->next;
+    }
+
+    if (head->val == prev) {
+        ans->next = NULL;
+    } else {
+        ans->next = head;
+    }
+
+    return temp->next;
+}
+```
+Time complexity O(n), space complexity O(1).
+
+##### 20:30
+Have to work on Raahee feture tomorrow for demo on 7th. Getting the report feature ready is a large task considering the time I have.
+In any case, not feeling like working anymore today. So I'll get back tomorrow.
+
+Also, this blog needs a feature for me to write something and only show when I'm logged in. I mean, what if I want to write about my feelings? Gonna do that after completing the Raahee features.
+
+> Sayonara!
+
+### EOD Checklist
+- [ ] Go
+- [x] Leetcode January Challenge
+- [x] Codechef Long Challenge
+- [ ] Raahee
+- [x] This blog 
