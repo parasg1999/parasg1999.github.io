@@ -3,9 +3,6 @@
 # global dictionary is at the start, file overrides afterwards
 # one word per line, to define a file override use ' - filename'
 # where filename is relative to this configuration file
-SpotifyPlayer
-lineNumbers
-lang
 Leetcode
 Codechef
 Raahee
@@ -17,3 +14,7 @@ Mansi
 Kshitija
 IIIT
 Una
+HideContent
+src
+Crio
+saturday

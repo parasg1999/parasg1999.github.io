@@ -7,6 +7,8 @@ tags:
   - Crio.do
 ---
 
+import HideContent from "../../../src/HideContent/HideContent"
+
 ##### 12:30
 Received a mail from Crio yesterday about Winter of doing round 1. Isn't really a big deal since I don't even think they've shortlisted anyone yet. Waiting for the saturday event to learn more and see if it's as good as the hype surrounding it.
 Starting Raahee work for today.  
@@ -66,9 +68,42 @@ func findKthPositive(arr []int, k int) int {
 }
 ```
 
+##### 17:55
+So I was thinking about writing secrets in here, and I have made a basic component that would take the password and unlock what I wrote.
+
+Try writing `parasisgreat` in the box and press enter. Oh I know you don't wanna write it but I'm a braggart!
+
+<HideContent myKey="parasisgreat">
+    <p style={{color: "#03DAC5"}}>This would generally contain a secret.</p>
+</HideContent>
+
+Well you shouldn't be surprised! 😇
+
+Amidst the glory of this, I almost forgot that I also used spell check today for rechecking all the posts.
+Used `markdown-spellcheck` for the task.
+
+```bash
+npm i -g markdown-spellcheck
+
+# -n for not including numbers
+mdspell -n '**/*6*/**.mdx' '!**/node_modules/**/*.mdx'
+```
+
+##### 21:50
+Done with the report feature in Raahee website. Took almost 90 minutes and now I'm tired.
+
+I have also been thinking about the best way to encrypt the data. I can go with standard encryption technique but it would be hard to actually remember the passwords for each document. Then there is an option for auto calculating password based on document slug, which would be a better approach. Also, rather than writing content here, I can just link it to firebase to fetch the content and parse the markdown which makes more sense but then my code is on GitHub. 😕
+
+##### 22:46
+Added like feature community page. The code seems to be messed up quite a lot. The database naming scheme used by the app and website teams differ so much that I don't even have the words to express myself.
+
+I think I'm just gonna sleep for now.
+
+> Ciao!
+
 ### EOD Checklist
 - [x] Go
 - [x] Leetcode January Challenge
 - [ ] Codechef Long Challenge
-- [ ] Raahee
-- [x] This blog 
+- [x] Raahee
+- [x] This blog (Implemented a new feature)
