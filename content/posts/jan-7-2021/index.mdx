@@ -1,0 +1,105 @@
+---
+title: Jan 7 - Daily Programming Diary
+date: 2021-01-07
+tags:
+  - Diary
+  - Programming
+---
+
+##### 15:00
+Don't really have the motivation to work today, but I guess I'll at least try today's [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/579/week-1-january-1st-january-7th/3595/).
+Naive approach: To check substring starting from every position and get the maximum length. The time complexity will be `O(n^2)`, which is causing TLE. So I guess I'll have to optimize it.
+
+```cpp:title=naive-approach-longest-substring-without-repeating-characters.cpp
+int lengthOfLongestSubstring(string s) {
+    int maxLen = 0, curr = 0;
+
+    for (int i = 0; i < s.length(); i++) {
+        unordered_map<char, int> umap;
+        curr = 0;
+        for (int j = i; j < s.length(); j++) {
+            if (umap[s[j]] == 1) {
+                curr = 0;
+            } else {
+                umap[s[j]] = 1;
+                curr++;
+                maxLen = max(maxLen, curr);
+            }
+        }
+    }
+    return maxLen;
+}
+```
+
+##### 17:00
+Took a break, and figured out a better approach in `O(n)`. Check when the previous occurrence of that character occurred and get max length based on that.
+
+```cpp:title=longest-substring-without-repeating-characters.cpp
+int lengthOfLongestSubstring(string s) {
+    int maxLen = 0;
+
+    int i = 0;
+    unordered_map<char, int> umap;
+    for (int j = 0; j < s.length(); j++) {
+        if (umap.find(s[j]) != umap.end()) {
+            i = max(umap[s[j]], i);
+        }
+        maxLen = max(maxLen, j - i + 1);
+        umap[s[j]] = j + 1;
+    }
+    return maxLen;
+}
+```
+
+Now I have no idea how to implement maps in Go, so today will be a first.  
+Okay, done with that.
+Lessons -
+
+1. Go doesn't have inbuilt Max function for integers which is a shocker.
+2. Maps in Go are far easy to check for existence of a key. `_ , check = map[key]` will return the value of `check` as false if the value is not present.
+3. Go doesn't have `char` data type, so `byte` is used to store a char.
+
+```go:title=longest-substring-without-repeating-characters.go
+// Had to implement the Max function myself
+func Max(x, y int) int {
+	if x < y {
+		return y
+	}
+	return x
+}
+
+func lengthOfLongestSubstring(s string) int {
+	var maxLen, i int = 0, 0
+	u_map := make(map[byte]int)
+	for j := 0; j < len(s); j++ {
+		// THIS
+		_, check = u_map[s[j]]
+		if check {
+			i = Max(u_map[s[j]], i)
+		}
+		/* OR 
+		temp := u_map[s[j]]
+		i = Max(temp, i)
+        */
+        maxLen = Max(maxLen, j-i+1)
+		u_map[s[j]] = j + 1
+	}
+
+	return maxLen
+}
+```
+
+##### 21:00
+I was thinking about writing a cron job for making my `<HideContent />` Component more secure. The current implementation allows anyone to see the source code and check the password which is not what I want.
+So, I can store an encrypted key in firebase that will change according to a set parameter everyday (using a cron job) and then my password will be checked against that encrypted key. Sounds secure!  
+
+The only issue with that approach is that I don't have a server right now to host the cron job on. I can think about using my PC, but then it's unpredictable if my PC will be turned on at the time. I'll probably go with Heroku and that hobby dyno, guess it'll be fine.
+
+
+
+### EOD Checklist
+- [x] Go
+- [x] Leetcode January Challenge
+- [ ] Codechef Long Challenge
+- [ ] Raahee
+- [x] This blog
