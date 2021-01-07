@@ -67,6 +67,16 @@
   Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-tags-query-tsx-35d09f4d1f6a70300fce.js>; rel=preload; as=script
   Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
   Link: </page-data/tags/page-data.json>; rel=preload; as=fetch; crossorigin
+/jan-7-daily-programming-diary
+  Link: </webpack-runtime-40ec981985f84e34e6b0.js>; rel=preload; as=script
+  Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </framework-29ba174b433dc5858bed.js>; rel=preload; as=script
+  Link: </app-39837b29095184ac95d3.js>; rel=preload; as=script
+  Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
+  Link: </aed2e917f30c051bccba91aa15989a75fd0bd633-f4662af29be1ab441901.js>; rel=preload; as=script
+  Link: </component---node-modules-lekoarts-gatsby-theme-minimal-blog-core-src-templates-post-query-tsx-6737aa013d3c04e428fe.js>; rel=preload; as=script
+  Link: </page-data/app-data.json>; rel=preload; as=fetch; crossorigin
+  Link: </page-data/jan-7-daily-programming-diary/page-data.json>; rel=preload; as=fetch; crossorigin
 /jan-6-daily-programming-diary
   Link: </webpack-runtime-40ec981985f84e34e6b0.js>; rel=preload; as=script
   Link: </styles-407fe62976dc5310c43e.js>; rel=preload; as=script
