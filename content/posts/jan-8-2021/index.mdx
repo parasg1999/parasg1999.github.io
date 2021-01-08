@@ -1,0 +1,96 @@
+---
+title: Jan 8 - Daily Programming Diary
+date: 2021-01-08
+tags:
+  - Diary
+  - Programming
+---
+
+##### 10:30
+Gonna study more about `redux` today and start implementing in Raahee component by component. The persistent state on reload is a way better approach to offer a better user experience that caching everything in the local storage by hand.
+
+##### 12:20
+While ~~playing around~~ integrating redux in the Raahee app, I thought about integrating redux component by component. The most important things to be kept in the redux store are:
+- Blogs
+- Events
+- Community Posts  
+
+All of these can be persisted across reloads. While fetching blogs on `/blog` page, the ones fetched at home page can be used as the initial blogs posts.
+
+Searched for [Dangerous Dave](https://www.playdosgames.com/play/dangerous-dave/) and played 3 levels! Fun! 🔥 
+
+##### 13:10 
+Gonna rice my Arch now.
+
+##### 14:40
+Back here! Although I tried working with `xmonad`, I have realised that I've been dependent on `i3` so much that the new key bindings will some time to get used to, time which I don't have. Starting today's [LeetCode Challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/580/week-2-january-8th-january-14th/3597/)
+
+Done! Today was easy.
+
+```cpp:title=check-if-two-string-arrays-are-equivalent.cpp
+bool arrayStringsAreEqual(vector<string> &word1, vector<string> &word2)
+{
+    string a = "", b = "";
+    for (int i = 0; i < word1.size(); i++)
+    {
+        a += word1[i];
+    }
+    for (int i = 0; i < word2.size(); i++)
+    {
+        b += word2[i];
+    }
+    return a == b;
+}
+```
+
+Writing in Go...
+
+```go:title=check-if-two-string-arrays-are-equivalent.go
+func arrayStringsAreEqual(word1 []string, word2 []string) bool {
+	var a, b string = "", ""
+	for _, e := range word1 {
+		a += e
+	}
+	for _, e := range word2 {
+		b += e
+	}
+	return a == b
+}
+```
+
+##### 17:00-ish
+So I installed "Oh My Zsh" and it seems pretty good to be honest. The plugins for git, just wow!
+It lets me type alias for git commands, lemme give some examples (always wanted to add a table here).
+
+|     alias     |       command         |
+|---------------|-----------------------|
+|     `gaa`     |     `git add --all`   |
+| `gco <branch>`|`git checkout <branch>`|
+|     `gcam`    |   `git commit -am`    |
+
+
+Work in Progress feature
+
+|     Command   |       Description     |
+|---------------|-----------------------|
+|     `gwip`    | Creates a commit in the branch to switch to another branch|
+|   `gunwip`    | Uncommits the `gwip`|
+|`work_in_progress` |	Echoes a warning if the current branch is a WIP|
+
+The complete list of functionality is [here](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git).
+
+I also discovered another command line utility called `hub`. According to their website, `hub` is an extension to command-line git that helps you do everyday GitHub tasks without ever leaving the terminal.
+It can be used to open PRs, check open issues and PRs, and basically use GitHub from the terminal. Tell me that's not cool and I'll punch you. 😛
+
+Screenshot of the new shell! Haaye ❤️💞
+
+![zsh screenshot](./zsh-ss.png)
+
+Image has unnecessary top and bottom margin. Tried fixing but I'm just tired, and it's already 21:20
+
+### EOD Checklist
+- [x] Go
+- [x] Leetcode January Challenge
+- [ ] Codechef Long Challenge
+- [x] Raahee
+- [x] This blog
