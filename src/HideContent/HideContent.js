@@ -22,7 +22,6 @@ const HideContent = (props) => {
 
     const handlePassChange = (event) => {
         setPass(event.target.value);
-        console.log(event.target.value, props.myKey);
     }
 
     const handleSubmit = (event) => {

@@ -88,9 +88,31 @@ Screenshot of the new shell! Haaye ❤️💞
 
 Image has unnecessary top and bottom margin. Tried fixing but I'm just tired, and it's already 21:20
 
+##### 22:00
+Just attended the Raahee App Beta launch, great work by the team. I wish the website was this good.
+
+Just did the Crio Sherlock Challenge. Was provided with a long file with user logs and had to find user related data from it. Used the `grep` and `awk` commands to accomplish the task.
+Questions:
+
+1. Find out how many different (unique) IPs Anushka used, to access Flipkart site from the following [log](https://docs.google.com/document/d/1aG7Rfs18LrYO1mKq270eqA8EEFo_WBpGvwhsjTZN4ns/edit)?
+2. She mentioned to the customer support team that she uses only a windows laptop and her Android phone to access Flipkart site. Can you find out how many accesses were made to her account from an iPad?
+
+import HideContent from '../../../src/HideContent/HideContent'
+
+Solutions:
+<HideContent myKey="solution">
+    <p style={{color: "#03DAC5"}}>
+      <ol>
+        <li><code>{`awk -F, '{print $3}' sherlock.txt | sort | uniq | wc -l`}</code></li>
+        <li><code>{`cat sherlock.txt | grep Anushka | grep iPad | wc -l`}</code></li>
+      </ol>
+    </p>
+</HideContent>
+
+Don't want the search engine to index this stuff, so I think it's better to just hide it from the crawler.
+
 ### EOD Checklist
 - [x] Go
 - [x] Leetcode January Challenge
-- [ ] Codechef Long Challenge
 - [x] Raahee
 - [x] This blog
