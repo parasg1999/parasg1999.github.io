@@ -1,0 +1,91 @@
+---
+title: Jan 9 - Daily Programming Diary
+date: 2021-01-09
+tags:
+  - Diary
+  - Programming
+---
+
+##### 12:30
+Excited for the Crio event today. I have no idea what to expect and building a portfolio is probably the last thing that I want to do right now.
+Just signed up for Adsense and it was tricky to modify the SEO component to integrate the script. Phew!
+
+It's almost 13:30 and the new Leetcode challenge is about to be posted. Today's challenge is...drum roll please...[Word Ladder](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/580/week-2-january-8th-january-14th/3598/) 
+
+##### 14:50
+Wow, a graph question that took so much time. But I'm glad I was able to solve it. Pretty sure there could be a better approach but it was the best I could do. It really helped putting everything on a paper to get the idea of how the whole thing works.
+
+**Approach :**
+Start from the `beginWord` and generate the possible conversions from that by changing a letter. So `mad` can become `*ad`, `m*d`, and `ma*`. Whatever of these words exist in the original list but we haven't visited, we put them in a queue.
+And do the same thing till we reach the `endWord`, incrementing the counter each time queue empties.
+
+```cpp:title=word-ladder.cpp
+vector<string> getNeighbors(string str) {
+    vector<string> v;
+    for (int i = 0; i < str.length(); i++) {
+        char org = str[i];
+        for (int j = 0; j < 26; j++) {
+            str[i] = j + 'a';
+            v.push_back(str);
+        }
+        str[i] = org;
+    }
+    return v;
+}
+
+int ladderLength(string beginWord, string endWord, vector<string> &wordList) {
+    queue<string> q;                                           // Keep track of neighbors
+    unordered_set<string> s(wordList.begin(), wordList.end()); // O(1)
+
+    if (s.find(endWord) == s.end()) return 0; // end word not in set
+
+    s.erase(beginWord); // same word twice? (Noop)
+    q.push(beginWord);  // Initial queue
+    int trans = 0;      // Level in BFS
+
+    while (!q.empty()) {
+        trans++;
+        int qSize = q.size(); // Initial queue size
+        for (int i = 0; i < qSize; i++) {
+            string currWord = q.front();
+            q.pop();          // Remove from queue (black)
+            if (currWord == endWord) return trans;
+            vector<string> v = getNeighbors(currWord);
+            for (int m = 0; m < v.size(); m++) {
+                if (s.find(v[m]) != s.end()) {  // If not exists
+                    s.erase(v[m]);  // Remove from set (white)
+                    q.push(v[m]);   // Add to queue (grey)
+                }
+            }
+        }
+    }
+    return 0; // If couldn't reach endWord
+}
+```
+
+The time complexity for `O(26 * M^2 * N)` where M is the length of each word, and N is the number of words. So asymptotically it is `O(M^2 * N)` and space complexity `O(M * N)` for the word set.
+
+I am not sure I want to implement this code in `Go`. Yeah, maybe some other time.
+
+##### 17:30
+Have been thinking about some open source contributions, but every time there's the same issue of not being able to find a project. So I thought I could use my `<HideContent />` component and make it a standalone library with some cool features like preprocessing the input and encrypting the password with firebase or custom API. 
+
+##### 19:30
+Just attended the Crio Winter of Doing event.
+So what I understood from there is that there are some modules that need to be completed. The thing is that I already know a lot of that stuff but I have to go through all those modules if I want to process to stage 2 which is frustrating.
+
+I started with the HTTP Module and they are teaching about reading request and response objects from Chrome Developer Tools. Then concepts about HTTP Methods (`GET`, `POST`, ...)
+
+Will continue tomorrow.
+
+##### 22:30
+Created some issues on GitHub in React repository and talked about setting up own server. Guess the downtime was a good thing! 😉  
+Still have to decide if we should use PostgreSQL or MongoDB, Node.js or nestjs.  Always wanted to work on back-end. Yay!
+
+> Bye! Been a long time since I wrote like this.
+
+### EOD Checklist
+- [ ] Go
+- [x] Leetcode January Challenge
+- [x] Raahee (Just attended the meeting)
+- [x] This blog

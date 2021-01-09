@@ -21,3 +21,6 @@ saturday
 TLE
 Heroku
 dyno
+redux
+PostgreSQL
+MongoDB
