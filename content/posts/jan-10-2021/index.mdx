@@ -1,0 +1,92 @@
+---
+title: Jan 10 - Daily Programming Diary
+date: 2021-01-10
+tags:
+  - Diary
+  - Programming
+---
+
+##### 6:30
+Starting a bit early today. I was looking at the `<Navbar />` yesterday and thought the performance on first reload could be improved by using `useEffect` instead of the currently used location listener. Voila! It worked.
+
+See, I can do UI fixes as well 🤷‍♂️ 
+
+##### 8:00
+I was exploring the source code and figured out 2 major things - 
+- The react router only works with `<Link />` component. The `<a/>` tags don't go well when working with SPAs.
+- I don't know react.
+
+> ```setTimeout(() => resumeWork(), 2 * 1000 * 60 * 60);```
+
+##### 10:05
+Started with the Crio bytes. Since I already knew the basics of HTTP, REST, Linux, and EC2, I was able to zoom through the modules pretty quickly. 
+
+##### 14:30
+Starting with today's [Leetcode Challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/580/week-2-january-8th-january-14th/3599). At first I wasn't able to understand the question. I thought I had to calculate the minimum cost of creating the sorted array which got me confused. After reading it for the `n`<sup>`th`</sup> time, I figured that the elements have to be inserted in an orderly manner.
+
+##### 15:00
+It's been half an hour and the code I wrote to do the calculation is giving TLE, and I get it. The implementation is taking O(n^2) time to calculate the prefix sum.
+I have no idea so I'm gonna take a look at the hint.
+
+##### 15:20
+So I studied about BIT aka Binary Indexed Tree, which calculates prefix sum in O(logn) time so the overall complexity of my program will go down to O(nlogn).
+
+##### 16:00
+Done with the code. Wow! New gun in my arsenal.
+
+```cpp:title=create-sorted-array-through-instructions.cpp
+int bit[100002];
+
+// Find prefix sum of a number
+int prefixSum(int num) {
+    int ans = 0;
+    for (int i = num; i > 0; i -= (i & -i)) {
+        ans += bit[i];
+    }
+    return ans;
+}
+
+// Update the prefix sum values
+int update(int num) {
+    for (int i = num; i <= 100001; i += (i & -i)) {
+        bit[i] += 1;
+    }
+    return 0;
+}
+
+int createSortedArray(vector<int> &inst) {
+    int ans = 0;
+    for (int i = 0; i < inst.size(); i++) {
+        ans += min(prefixSum(inst[i] - 1), i - prefixSum(inst[i]));
+        ans %= 1000000007;
+        update(inst[i]);
+    }
+    return ans;
+}
+```
+
+Again, no Go for this question. I'm just gonna put Go on hold for now unless I have some work on the back-end.
+
+> break;
+
+##### 18:00
+Attending the Crio event now for REST byte.
+
+##### 19:00
+To be honest, after having developed a few production-ready APIs, I didn't learn anything new in the session but I guess I'll complete the byte and see what round 2 has for me.
+
+##### 22:30
+I started with building the Raahee server and made a boilerplate. Took some time to get the modules ready. Will be working on the database models now.
+
+##### 23:00
+Been writing models for the last 30 minutes and there are some issues. The conventions used in the document are inconsistent. `imageUrl` and `imageurl` in different collections. It's a bit frustrating to actually look for these things when back-end is generally the first thing built.
+
+##### 23:30
+I'm tired now and will continue tomorrow. Will possibly work on the authentication and basic doc creation for events and such.
+
+> Okay Bye
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [x] Raahee (Just attended the meeting)
+- [x] This blog
