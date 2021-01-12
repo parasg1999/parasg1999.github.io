@@ -4,11 +4,36 @@ date: 2021-01-11
 tags:
   - Diary
   - Programming
+  - LocalHackDay
 ---
 
+##### 16:00
+I know what you wanna say - *Wake up early! This is no way to live.*
+Agreed!
 
+Anyway I submitted a couple of challenges in MLH LocalHackDay and just completed the [Leetcode Daily Challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/580/week-2-january-8th-january-14th/3600/).
+Had to merge two sorted arrays in the first array. I looked at the constraints and my immediate reaction was 200 elements, that's too low so I implemented the way we merge arrays but the inplace thing turned out to be more challenging that it initially seemed. So I merged the two arrays together and did the sort on them since you know, 200.
+
+```cpp:title=merge-sorted-array.cpp
+void merge(vector<int> &nums1, int m, vector<int> &nums2, int n) {
+    if (n == 0) return;
+
+    for (int i = 0; i < n; i++) {
+        nums1[m + i] = nums2[i];
+    }
+
+    sort(nums1.begin(), nums1.end());
+    return;
+}
+```
+
+##### 23:30
+I didn't write a lot today. Most of the time I was working on MLH Local Hack Day. I have 15 points on Day 1.
+Could this BE any better!?
+
+Anyway it's already 00:30 on 12<sup>th</sup>, so I'll go and work on Raahee Blog now.
 
 ### EOD Checklist
-- [ ] Leetcode January Challenge
-- [ ] Raahee (Just attended the meeting)
-- [ ] This blog
+- [x] Leetcode January Challenge
+- [x] Raahee (Just attended the meeting)
+- [x] This blog
