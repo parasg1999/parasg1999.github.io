@@ -68,9 +68,12 @@ Okay, wow! Found a workaround using DOM.
     ```js
     // let allValues = document.querySelectorAll(".mat-cell-wrapper")
     let UIDs = []
+    let emails = []
     allValues.forEach((value, index) => {
         if (index % 5 === 4) {
-            UIDs.push(a.innerText)
+            UIDs.push(value.innerText)
+        } else if (index % 5 === 0) {
+            emails.push(value.innerText)
         }
     });
 
