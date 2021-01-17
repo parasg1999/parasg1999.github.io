@@ -1,0 +1,25 @@
+---
+title: Jan 16 - Daily Programming Diary
+date: 2021-01-16
+tags:
+  - Diary
+  - Programming
+---
+
+##### 22:00
+Just solving today's [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/581/week-3-january-15th-january-21st/3606/) and then relaxing
+
+```cpp:title=kth-largest-element-in-an-array.cpp
+int findKthLargest(vector<int> &nums, int k)
+{
+    sort(nums.begin(), nums.end(), greater<int>());
+    return nums[k - 1];
+}
+```
+
+> Ok, bye!
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [ ] Raahee
+- [x] This blog
