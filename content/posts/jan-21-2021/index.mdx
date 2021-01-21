@@ -1,0 +1,52 @@
+---
+title: Jan 21 - Daily Programming Diary
+date: 2021-01-21
+tags:
+  - Diary
+  - Programming
+---
+
+##### 19:00
+Didn't write yesterday since I was working on Raahee late night. I applied to a lot of places for job opportunities but I am confused about what to do now. For now, I'll just work on 
+solving today's [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/581/week-3-january-15th-january-21st/3609/) 
+
+```cpp:title=longest-palindromic-substring.cpp
+string longestPalindrome(string s) {
+    if (s.length() < 2)
+        return s;
+    int max_len = 0;
+    int start_idx = 0;
+    int i = 0;
+    while (i < s.length()) {
+        int right = i;
+        int left = i;
+        //find the middle of a palindrome
+        while (right < s.length() - 1 && s[right] == s[right + 1]) {
+            right++; 
+        }
+        i = right + 1;
+        //expand from the middle out
+        while (right < s.length() - 1 && left > 0 && s[right + 1] == s[left - 1]) {
+            right++;
+            left--;
+        }
+        int new_len = right - left + 1;
+        if (new_len > max_len) {
+            start_idx = left;
+            max_len = new_len;
+        }
+    }
+    return s.substr(start_idx, max_len);
+}
+```
+
+`O(N^2)` time, and `O(1)` space.
+
+Going to Delhi tomorrow, so most probably it'll leave a blank on my GitHub profile. :/
+
+> Arrivederci!
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [ ] Raahee
+- [x] This blog
