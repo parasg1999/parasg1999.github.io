@@ -6,45 +6,67 @@ tags:
   - Programming
 ---
 
-##### 19:00
-Didn't write yesterday since I was working on Raahee late night. I applied to a lot of places for job opportunities but I am confused about what to do now. For now, I'll just work on 
-solving today's [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/581/week-3-january-15th-january-21st/3609/) 
+##### 23:00
+Writing pretty late tonight. So I gave the test for Delhivery today and I think it went pretty well. For what it's worth, I think that there is a good chance but then again, luck never has my side now does it!
 
-```cpp:title=longest-palindromic-substring.cpp
-string longestPalindrome(string s) {
-    if (s.length() < 2)
-        return s;
-    int max_len = 0;
-    int start_idx = 0;
-    int i = 0;
-    while (i < s.length()) {
-        int right = i;
-        int left = i;
-        //find the middle of a palindrome
-        while (right < s.length() - 1 && s[right] == s[right + 1]) {
-            right++; 
-        }
-        i = right + 1;
-        //expand from the middle out
-        while (right < s.length() - 1 && left > 0 && s[right + 1] == s[left - 1]) {
-            right++;
-            left--;
-        }
-        int new_len = right - left + 1;
-        if (new_len > max_len) {
-            start_idx = left;
-            max_len = new_len;
+Since I forgot to complete yesterday's [Leetcode Challenge](https://leetcode.com/explore/challenge/card/january-leetcoding-challenge-2021/581/week-3-january-15th-january-21st/3610/). Of course, a standard stack application, checking balanced paratheses.
+
+```cpp:title=valid-paratheses.cpp
+bool isValid(string s) {
+    stack<char> stk;
+    for (int i = 0; i < s.length(); i++) {
+        if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
+            stk.push(s[i]);
+        } else if (stk.empty()) {
+            return false;
+        } else {
+            if (s[i] == ')' && stk.top() == '(') {
+                stk.pop();
+            } else if (s[i] == ']' && stk.top() == '[') {
+                stk.pop();
+            } else if (s[i] == '}' && stk.top() == '{') {
+                stk.pop();
+            } else return false;
         }
     }
-    return s.substr(start_idx, max_len);
+    return stk.empty();
 }
 ```
 
-`O(N^2)` time, and `O(1)` space.
+Now, today's [question](https://leetcode.com/explore/challenge/card/january-leetcoding-challenge-2021/581/week-3-january-15th-january-21st/3611/) seemed to be out of my league but I thought about a stack based solution that can find the smallest element in the first `n-k` elements and then proceed with the rest of the array.
 
-Going to Delhi tomorrow, so most probably it'll leave a blank on my GitHub profile. :/
+```cpp:title=find-the-most-competitive-subsequence.cpp
+vector<int> mostCompetitive(vector<int> &nums, int k) {
+    int permitted_ops = nums.size() - k;
+    stack<int> stk;
+    for (int i = 0; i < nums.size(); i++) {
+        while (!stk.empty() && nums[i] < stk.top() && permitted_ops > 0) {
+            stk.pop();
+            permitted_ops--;
+        }
+        stk.push(nums[i]);
+    }
 
-> Arrivederci!
+    stack<int> temp;
+    vector<int> ans;
+
+    while (!stk.empty()) {
+        temp.push(stk.top());
+        stk.pop();
+    }
+
+    while (!temp.empty() && k--) {
+        ans.push_back(temp.top());
+        temp.pop();
+    }
+
+    return ans;
+}
+```
+
+That's all for today. I think I'll read a book now. Not gonna write more since I don't wanna jinx it. 
+
+> Bye!
 
 ### EOD Checklist
 - [x] Leetcode January Challenge
