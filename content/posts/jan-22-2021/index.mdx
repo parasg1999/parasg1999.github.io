@@ -1,0 +1,71 @@
+---
+title: Jan 22 - Daily Programming Diary
+date: 2021-01-22
+tags:
+  - Diary
+  - Programming
+---
+
+##### 15:00
+So I read the first few pages of the book and it was so difficult that I don't even have the words. Now, I'm back on the [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/582/week-4-january-22nd-january-28th/3613/). 
+The first approach I thought about was to store the frequencies and then sort the arrays to check if they are equal but then the letters which are different will not be available.
+
+Okay, some modifications. The only situation where the modifications are possible if the letters being used are the same, so the letters with zero frequencies in one string but present in other will definitely be false.
+
+And it worked!
+
+```cpp:title=
+bool closeStrings(string word1, string word2) {
+    if (word1.length() != word2.length()) return false;
+
+    vector<int> arr1(26, 0);
+    vector<int> arr2(26, 0);
+
+    for (int i = 0; i < word1.length(); i++) {
+        arr1[word1[i] - 'a']++;
+        arr2[word2[i] - 'a']++;
+    }
+
+    for (int i = 0; i < 26; i++) {
+        if ((arr1[i] > 0 && arr2[i] == 0) || (arr1[i] == 0 && arr2[i] > 0))
+            return false;
+    }
+
+    sort(arr1.begin(), arr1.end());
+    sort(arr2.begin(), arr2.end());
+
+    return arr1 == arr2;
+}
+```
+
+Time complexity `O(nlogn)` where `n` is the length of the strings. And space complexity is `O(1)` since I'm sing two vectors of size 26 each.
+
+##### 15:30
+I'll work on something for Raahee today. Maybe fix the community page with relative time, that would be so interesting.
+
+##### 19:00
+No, I didn't take a break.
+So I started working on the profile feature and the first thing that I had to decide was whether to use `context` API or redux. I decided to go with redux since it will help in setting up the boilerplate as well as offer better performance when compared to the plain `useContext()`. 
+The next roadblock was deciding between simple `react-redux` and `react-toolkit`. I decided to go with the toolkit since it saves a large amount of time that goes into writing reducers and actions by hand. 
+
+Now, time for a story.
+
+> I was trying to rebase the branch on which I was working and I thought that it was done, but after working for approximately 2 hours, when I had to commit, I realised that I was still working in the rebase. Now I did what a normal person would do. Search on stack overflow and ran the command `git rebase --abort` and BAM!! All my changes are lost.
+After refactoring the entire code base and integrating redux for user login and making the `<PrivateRoute/>`, I'm back to square one. It's like all of it happened in my dream.
+
+So I started panicking and reverted the head, and now I'm behind than what I had a moment ago 🤦‍♂️
+
+Now was the time to quickly code everything from memory and took me around 80 minutes to code everything. Now, time for the commit!
+
+##### 22:00
+Working on the small changes and finally pushing users in the production DB. Have hit a major roadblock because of having to redo the blogs. I don't even know what to say. 
+
+##### 23:40
+I did complete rewriting 3 blogs but now I should sleep
+
+> **yawns...* Bye!
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [x] Raahee
+- [x] This blog
