@@ -1,0 +1,69 @@
+---
+title: Jan 23 - Daily Programming Diary
+date: 2021-01-23
+tags:
+  - Diary
+  - Programming
+---
+
+##### 1:00
+Started posting the blogs and discovered a bug. The images stored will be stored according to the name given by the person who posts the image, causing collisions, and that's not what should happen in production. There are two ways to generate a unique ID.
+- Generating the ID based on timestamps, but this is not efficient with a large user base.
+- Using the `UUID` package which will definitely generate a randomized string. 
+
+##### 1:30
+Fixed the unique filename situation, and we are back on track. The only thing left to do is update the blogs and event images. Will be doing it after waking up.
+
+> Night night!
+
+##### 18:30
+Slept a lot and starting the [Leetcode Daily Challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/582/week-4-january-22nd-january-28th/3614/). The question seems to be more of an implementation problem than thee logic itself. I'm making the separate vectors for every diagonal and sorting them individually. After that, I'll put them back into the main matrix.
+
+```cpp:title=sort-the-matrix-diagonally.cpp
+vector<vector<int>> diagonalSort(vector<vector<int>> &mat) {
+    unordered_map<int, vector<int>> sorted_map;
+
+    for (int i = 0; i < mat.size(); i++) {
+        for (int j = 0; j < mat[i].size(); j++) {
+            if (sorted_map.find(i - j) == sorted_map.end()) {
+                vector<int> temp;
+                temp.push_back(mat[i][j]);
+                sorted_map[i - j] = temp;
+            } else {
+                sorted_map[i - j].push_back(mat[i][j]);
+            }
+        }
+    }
+
+    unordered_map<int, vector<int>>::iterator itr;
+
+    for (itr = sorted_map.begin(); itr != sorted_map.end(); itr++) {
+        sort(itr->second.begin(), itr->second.end());
+    }
+
+    for (int i = 0; i < mat.size(); i++) {
+        for (int j = 0; j < mat[i].size(); j++) {
+            mat[i][j] = sorted_map[i - j][0];
+            sorted_map[i - j].erase(sorted_map[i - j].begin());
+        }
+    }
+
+    return mat;
+}
+```
+
+Time complexity `O(n*m)` where `n` and `m` are the dimensions of the matrix. And space complexity is `O(m+n)` 
+
+##### 21:45
+Finally deployed the Raahee website after making the required changes to events and blogs. God, it's been some good 3 months.  
+Version 2.0 ✅
+
+##### 23:00
+I guess that was it for today.
+
+> Bye!
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [x] Raahee
+- [x] This blog
