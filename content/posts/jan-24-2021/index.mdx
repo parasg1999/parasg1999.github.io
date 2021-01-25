@@ -1,0 +1,101 @@
+---
+title: Jan 24 - Daily Programming Diary
+date: 2021-01-24
+tags:
+  - Diary
+  - Programming
+---
+
+##### 14:00
+I'm feeling bored and I think I should work on something. Yesterday we discussed about implementing a feature so that people could post testimonials about the event that they attended. While the meeting is schedules to take place at night, I think I should get started with it.
+
+**Hurdle 1 - ** The Admin Pages are broken. There is an error which is making the components which rely on the `<ProtectedRouteAdmin />` not being able to render properly.  
+After banging my head on the wall for 30 minutes, I figured out the error, the props! The component was being passed as render prop and not as a component which complicated stuff for the route handler. 
+
+**Hurdle 2 -** The `react-slick` is working in a very weird manner. There seems to be a property bug and since I didn't implement the feature, I'm not even able to figure out the code. But I guess that's the most important part of being a developer. *Understanding code written by other people, optimizing it, and making great stuff with it.* I have been in support of creating a documentation since day 1 and now I feel that it is strongly required.
+
+##### 16:00
+I finally got to implementing the testimonials feature. Pretty straightforward if you ask me. Create a map, store the UID with their testimonial and we are done.
+
+##### 17:00
+Done with that. Wow, that was fast! 
+
+Time for the [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/582/week-4-january-22nd-january-28th/3615/). I have never worked on a problem like this since I always thought that it requires a lot of knowledge but here I am, trying to figure out a way to solve this question.
+
+The first approach I can think of is to combine two lists and then two, and so on.
+Okay, that seems to simplify the problem a bit. Writing the code for merging two lists doesn't seem to be that big a problem.
+
+Now what?  
+Well, now I have to figure out a way to merge lists one by one. Let's say I have `n` lists.
+
+|Merge|Nodes left|
+|-|-|
+|1 and n|1 to n-1|
+|2 and n-1|1 to n-2|
+|3 and n-2|1 to n-3|
+|...|...|
+|1 and n/2|1 to (n/2) - 1|
+|...|...|
+
+That looks great. So merge the lists one by one using 2 pointers, then when 2<sup>nd</sup> pointer gets lesser than 1<sup>st</sup>, change 1<sup>st</sup> to 0.
+
+And that works! Nice! Woah!
+
+```cpp:title=merge-k-sorted-lists.cpp
+ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+    if (!l1) return l2;
+    if (!l2) return l1;
+
+    ListNode *head = new ListNode();
+    ListNode *ans = head;
+
+    while (l1 != NULL && l2 != NULL) {
+        if (l1->val < l2->val) {
+            head->next = l1;
+            l1 = l1->next;
+            head = head->next;
+        } else {
+            head->next = l2;
+            l2 = l2->next;
+            head = head->next;
+        }
+    }
+
+    if (l1 == NULL) {
+        head->next = l2;
+    } else {
+        head->next = l1;
+    }
+
+    return ans->next;
+}
+
+ListNode *mergeKLists(vector<ListNode *> &lists)
+{
+    int i = 0, j = lists.size() - 1;
+
+    if (lists.size() == 0) return NULL;
+
+    while (i < j) {
+        lists[i] = mergeTwoLists(lists[i], lists[j]);
+        i++;
+        j--;
+        if (i >= j) {
+            if (j == 0)
+                return lists[0];
+            i = 0;
+        }
+    }
+    return lists[0];
+}
+```
+
+##### 19:00
+The meeting got cancelled, so I guess I don't have much work to do.
+
+> Going out, not working anymore!
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [x] Raahee
+- [x] This blog
