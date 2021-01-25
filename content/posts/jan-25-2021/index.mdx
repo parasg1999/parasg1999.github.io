@@ -1,0 +1,51 @@
+---
+title: Jan 25 - Daily Programming Diary
+date: 2021-01-25
+tags:
+  - Diary
+  - Programming
+---
+
+##### 14:00
+Not feeling like doing anything today so I'll just be doing the [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/582/week-4-january-22nd-january-28th/3616/) for now.
+
+The question seems very simple, and actually helps me maintain the lazy schedule I've been having today.
+
+```cpp:title=check-if-ones-are-k-places-away.cpp
+bool kLengthApart(vector<int> &nums, int k) {
+    int index = -1000000;
+    for (int i = 0; i < nums.size(); i++) {
+        if (nums[i] == 1) {
+            if (i - index <= k) return false;
+            index = i;
+        }
+    }
+
+    return true;
+}
+```
+
+Time complexity `O(n)`, space `O(1)`. Pretty simple, oh I love one of these days.
+
+> Gonna sleep again!
+
+##### 21:00
+Last day at Raahee. It feels as if I started recently. No, it's not a phrase. Anyway, I hope for GSoC this year. Going to work real hard.
+I asked people for comverting to functional components and the PR seems to have caught my eye. There seems to be a bug and I'm pretty sure it wasn't tested before pushing.
+
+I fixed it! Turns out, the bug wasn't so small as it seemed at the first glance. But done and dusted! :)
+
+HackOn Meeting at 10:00, I feel kinda useless in these meetings. I mean these people, they know what they're doing. And me? I'm a nobody. I could never belong. Let's see what's in store today.
+
+> I'll be back
+
+##### 22:40
+OKAY. So I attended the meeting and my face is red (literally). Nervousness!
+These people are awesome and I hope I can learn a few things from them.
+
+> I'm tired!
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [x] Raahee
+- [x] This blog
