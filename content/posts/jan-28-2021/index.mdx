@@ -1,0 +1,153 @@
+---
+title: Jan 28 - Daily Programming Diary
+date: 2021-01-28
+tags:
+  - Diary
+  - Programming
+---
+
+##### 10:00
+I was doing the [Leetcode Challenge](https://leetcode.com/explore/challenge/card/january-leetcoding-challenge-2021/582/week-4-january-22nd-january-28th/3618/) last night but decided to do it in the morning instead. Now with my brain working in a better condition, I think it's time to solve the problem. 
+
+Just get the number of bits in the current number, and multiply the answer till now with `2 ^ NO_OF_BITS` and take MOD.
+
+```cpp:title=concatenation-of-consecutive-binary-numbers.cpp
+int MOD = 1000000007;
+int countBits(unsigned int number) {
+    return (int)log2(number) + 1;
+}
+
+int concatenatedBinary(int n) {
+    long long ans = 1;
+    for (int i = 2; i <= n; i++) {
+        int digits = countBits(i);
+        while (digits--) {
+            ans *= 2;
+            ans %= MOD;
+        }
+        ans += i;
+        ans %= MOD;
+    }
+
+    return ans;
+}
+```
+
+Time complexity `O(n logn)`, space `O(1)`.
+
+Time for Dijkstra's Algorithm now. I hope I can implement it.
+
+##### 12:17
+Finally! God it feels so good! I can't believe I effing did it. 
+
+So, the approach right? 
+I am maintaining a vector `efforts` regarding the efforts (cost) to be put to go to a particular node.
+Then inserting into set based on distance to get the minimum distance node. The vector `visited` tells whether the particular node has already been visited so as not to be stuck inside an infinite loop.
+
+So after getting the minimum distance node, check the neighbours and update their efforts if the current node is a better way to reach that node.
+
+Then update `min_dist` which stores the maximum of the minimum distance that need to be traversed at that point of time.
+
+**Problems faced**
+- I was updating visited as soon as I inserted anything into the set, instead it should've been done when erasing it from set.
+- Updating `min_dist` as soon as I track the neighbours but it checks the `visited` property and then messes up the whole set.
+- Returning too early - As soon as the target node was removed from the set, I returned without giving the chance to actually update the `min_dist`. This is the part which is still a bit cloudy but it's probably because I'm not visiting a node until I track it's neighbours.
+This is related to the 2<sup>nd</sup> issue.
+
+```cpp:title=path-with-minimum-effort.cpp
+int minimumEffortPath(vector<vector<int>> &heights) {
+    int m = heights.size(), n = heights[0].size();
+    int dx[4] = {1, 0, 0, -1};
+    int dy[4] = {0, 1, -1, 0};
+
+    int min_dist = 0;
+
+    vector<vector<int>> efforts(m, vector<int>(n, INT_MAX)); // All distance INF initially
+    vector<vector<bool>> visited(m, vector<bool>(n, false)); // No nodes visited initially
+    set<pair<int, pair<int, int>>> s;                        // To get node with MIN effort
+
+    efforts[0][0] = 0; // SRC Node has distance 0
+
+    s.insert(make_pair(0, make_pair(0, 0)));
+
+    while (!s.empty())
+    {
+        auto p = *(s.begin());
+
+        int row = p.second.first;
+        int col = p.second.second;
+
+        s.erase(s.begin());
+        visited[row][col] = true; // Current Node has been visited
+
+        min_dist = max(min_dist, efforts[row][col]);
+
+        for (int i = 0; i < 4; i++) {
+            int new_row = row + dx[i];
+            int new_col = col + dy[i];
+
+            if (new_row < 0 || new_row >= m || new_col < 0 || new_col >= n) {
+                continue;
+            }
+
+            if (abs(heights.at(new_row).at(new_col) - heights[row][col]) < efforts.at(new_row).at(new_col) && !visited[new_row][new_col]) {
+                auto f = s.find(make_pair(efforts.at(new_row).at(new_col), make_pair(new_row, new_col)));
+                if (f != s.end()) {
+                    s.erase(f);
+                }
+
+                efforts.at(new_row).at(new_col) = abs(heights.at(new_row).at(new_col) - heights[row][col]);
+
+                s.insert(make_pair(efforts.at(new_row).at(new_col), make_pair(new_row, new_col)));
+            }
+        }
+
+        if (row == m - 1 && col == n - 1) return min_dist;
+    }
+    return 0;
+}
+```
+
+Time complexity `O(n*m + n*mlogn*m)` (Dijkstra's) and
+space complexity `O(m*n)` where `m` and `n` are the rows and columns respectively.
+
+##### 14:00
+Starting today's [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/582/week-4-january-22nd-january-28th/3619/).
+Pretty basic problem after the above one. :p
+
+Get the number of z in the string after accounting for the minimum number of a's to be inserted. Then add those z's. After that, add the character with the remaining value. Then remaining a's !
+
+```smallest-string-with-a-given-numeric-value.cpp
+string getSmallestString(int n, int k) {
+    k -= n;
+    string a = "";
+    int no_of_z = k / 25, j = 0;
+    k %= 25;
+    for (; j < no_of_z; j++) {
+        a += "z";
+    }
+    if (a.length() != n) {
+        a += ('a' + k);
+    }
+    for (; j < n - 1; j++) {
+        a += "a";
+    }
+
+    for (int i = 0; i < n / 2; i++) {
+        swap(a[i], a[n - 1 - i]);
+    }
+
+    return a;
+}
+```
+
+##### 22:00
+gave Crio.do test on HackerRank. It was really difficult considering the fact that it was supposed to be a "BASIC DSA TEST". But anyway, I don't think I'll get selected for the second round.
+
+Have to go to Gurgaon tomorrow! Hoping for some good news there!
+
+> Ciao!
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [x] This blog
