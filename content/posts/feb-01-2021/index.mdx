@@ -1,0 +1,69 @@
+---
+title: Feb 1 - Daily Programming Diary
+date: 2021-02-01
+tags:
+  - Diary
+  - Programming
+---
+
+Back from Gurgaon (Gurugram!?). The Samsung test went fine. I think I should get selected but I'm still not sure about the shortlisting criteria. But then again, I gave my best, passed the testcases and all is left to fate now. :)
+
+The TCS test was also good but then I wasn't able to attempt all the questions in "Quantitative Ability" section.
+
+##### 9:00
+There is some bug with the `class` script that I wrote. Although it saves a lot of time that is spent doing that redundant task of looking at time table, and getting the link from google classroom, the 9am weird bug is something that I need to fix.  
+As it turns out, I had to use `-lt` and not `-eq` when comparing `$CURRENT_HOUR`. 
+
+It's so efficient.
+
+##### 11:00
+It's the last few hours of January (on Leetcode) and I wanted to get the last questions done before it ends. So the [question](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/583/week-5-january-29th-january-31st/3622/) demands the deviation to be reduced. The thinking is that the max number if even should be divided by two until the max number is odd. Then the difference will be minimized.
+
+```cpp:title=minimize-deviation-in-an-array.cpp
+int minimumDeviation(vector<int> &nums) {
+    set<int> s;
+    for (auto i : nums) {
+        s.insert(i % 2 ? i * 2 : i);
+    }
+    int res = *s.rbegin() - *s.begin();
+    while (*s.rbegin() % 2 == 0) {
+        s.insert(*s.rbegin() / 2);
+        s.erase(*s.rbegin());
+        res = min(res, *s.rbegin() - *s.begin());
+    }
+    return res;
+}
+```
+
+##### 14:00
+February Leetcode Challenge is live. Question for [today](https://leetcode.com/explore/featured/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3625/) just wants the number of 1s in the binary representation of a number.
+Just keep on dividing the number by 2 and adding the remainder at all steps. 
+
+```cpp:title=number-of-1-bits.cpp
+int hammingWeight(uint32_t n) {
+    int ans = 0;
+    while (n != 0) {
+        ans += (n % 2);
+        n /= 2;
+    }
+
+    return ans;
+}
+```
+
+##### 15:00
+Working on the [HackOn Hackathon](https://github.com/HackOnHackathon/hackon2) website. The first task for me is to set that background image on the Hero section. Since I'm not so comfortable with the front end aspect of web development, it took a some time to get familiar with `Nuxt.js` as well as `Vue.js`. 
+Time to get started.
+
+##### 17:00
+Took me a while to get familiar with the code base and the asset referencing in Nuxt. But then the image positioning and gradient was a difficult part as well. Finally it looks like 80% similar to the figma design. Why so I want stuff in a perfect manner. It's a bane. :/
+
+Made the Pr, let's see what haxzie says. 
+
+Feeling so sick, I wanna sleep.
+
+> Goodbye!
+
+### EOD Checklist
+- [x] Leetcode February Challenge
+- [x] This blog

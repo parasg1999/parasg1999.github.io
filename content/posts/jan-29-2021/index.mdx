@@ -1,0 +1,52 @@
+---
+title: Jan 29 - Daily Programming Diary
+date: 2021-01-29
+tags:
+  - Diary
+  - Programming
+---
+
+##### 17:00
+In Gurgaon now! Let's just quickly solve today's [Leetcode challenge](https://leetcode.com/explore/featured/card/january-leetcoding-challenge-2021/583/week-5-january-29th-january-31st/3621/).
+
+This seems to be more of a implementation problem that the concept. I'll make a map that maps `x` coordinate to the "map that maps the `y` coordinate to the node value".
+
+```cpp:title=vertical-order-traversal-of-a-binary-tree
+map<int, map<int, set<int>>> m;
+
+void traverse(TreeNode *root, int x, int y) {
+    if (root == NULL) {
+        return;
+    }
+
+    m[x][y].insert(root->val);
+
+    traverse(root->left, x - 1, y + 1);
+    traverse(root->right, x + 1, y + 1);
+}
+
+vector<vector<int>> verticalTraversal(TreeNode *root) {
+    traverse(root, 0, 0);
+
+    vector<vector<int>> v;
+
+    for (auto a : m) {
+        vector<int> wow;
+        for (auto b : a.second) {
+            set<int> temp = b.second;
+            wow.insert(wow.end(), temp.begin(), temp.end());
+        }
+        v.push_back(wow);
+    }
+
+    return v;
+}
+```
+
+The time complexity is `O(N)` where `N` is the number of nodes, and space complexity is also `O(N)`
+
+Samsung test tomorrow, all the best Paras!
+
+### EOD Checklist
+- [x] Leetcode January Challenge
+- [x] This blog
