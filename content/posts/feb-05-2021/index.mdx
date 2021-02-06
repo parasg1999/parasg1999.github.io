@@ -1,0 +1,127 @@
+---
+title: Feb 5 - Daily Programming Diary
+date: 2021-02-05
+tags:
+  - Diary
+  - Programming
+---
+
+##### 11:30
+Feeling a lot better today so I'll get some work done. My streak has broken so it's time to get back on track. I have 2 hours to complete yesterday's [Leetcode challenge](https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3628).
+
+##### 12:00
+The problem seemed weird at first but then returning just the length of the subsequence looks pretty straighforward. The approach is to store all the frequencies in a map and then iterate over the map and calculate the sun if the previous number exists.
+
+##### 12:20
+Done! Yay!
+
+```cpp:title=longest-harmonious-subsequence.cpp
+int findLHS(vector<int> &nums) {
+    if (nums.size() < 2) return 0;
+
+    map<int, int> m;
+    int mi = INT_MAX;
+
+    for (int i = 0; i < nums.size(); i++) {
+        if (m.find(nums[i]) != m.end()) {
+            m[nums[i]]++;
+        } else {
+            m[nums[i]] = 1;
+            mi = min(mi, nums[i]);
+        }
+    }
+
+    int n, cnt, ans = 0;
+
+    for (auto a : m) {
+        if (a.first == mi) {
+            n = a.first;
+            cnt = a.second;
+            continue;
+        }
+
+        if (a.first - n == 1) {
+            ans = max(ans, a.second + cnt);
+        }
+
+        n = a.first;
+        cnt = a.second;
+    }
+
+    return ans;
+}
+```
+
+Time complexity `O(n)` for iterating over the vector as well as the map. Space complexity `O(n)` for the map.  
+Space complexity could've been reduced to `O(1)` by sorting the list and using something like a sliding window.
+
+##### 16:00
+Received instructions from Apoorv to change the Workshop and FAQ section on the HackOn website. Time to get started on that. I think working on the tracks section yesterday is helping a lot since I'm able to think about the flex properties and all that will be required. Good for me!
+
+The workshop section requires the cards to be modified to contain addition information along with layout changes.  
+The FAQ section has to be implemented from scratch so that's new. 
+
+My main focus for now would be to just focus on the layout and then work on the minor things like font and spacing. 
+
+##### 16:30
+Let's do today's [Leetcode challenge](https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3629/). Right of the bat, seems like a stack based problem. Simplifying a path, seems like an obvious problem but let's try.
+
+The first step is to split the string at `/` and then pushing into stack for all names except the ones which are empty or point to the parent/current (`../.`) directories. Then get everything from stack and append at the beginning of the string.
+
+```cpp:title=simplify-path.cpp
+public:
+string simplifyPath(string path) {
+    vector<string> tokens;
+    stringstream temp(path);
+    string intermediate;
+
+    while (getline(temp, intermediate, '/')) {
+        tokens.push_back(intermediate);
+    }
+
+    stack<string> stk;
+
+    for (auto a : tokens) {
+        if (a.length() == 0) continue;
+
+        if (a == ".") continue;
+
+        if (a == "..") {
+            if (!stk.empty()) {
+                stk.pop();
+            }
+            continue;
+        }
+
+        stk.push(a);
+    }
+
+    path = "";
+
+    while (!stk.empty()) {
+        path = "/" + stk.top() + path;
+        stk.pop();
+    }
+
+    if (path.length() == 0) return "/";
+
+    return path;
+}
+```
+
+Time complexity `O(n)`, space `O(n)` for the stack.
+
+##### 17:40
+Workshop revamp done. Looks identical to the figma design. Also changed the HashHeader to use `Sen` instead of `Roboto Mono`.
+
+##### 20:00
+Finally the workshop and the FAQ sections are donw. Made the PR. Took me a lot of time to set up the click listeners on the accordion, but I'm happy with the result.
+
+##### 21:00
+Now I have to implement pop up for workshops. I feel like Apoorv is giving me way too much work. There is a small issue with the opacity of some text which is triggering weird results with the backdrop. 
+
+> Bye!
+
+### EOD Checklist
+- [x] Leetcode February Challenge
+- [x] This blog
