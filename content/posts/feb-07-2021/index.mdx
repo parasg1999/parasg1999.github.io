@@ -1,0 +1,53 @@
+---
+title: Feb 7 - Daily Programming Diary
+date: 2021-02-07
+tags:
+  - Diary
+  - Programming
+---
+
+##### 1:30
+Yeah it's early but I thought I shouold complete my work on the HackOn website ASAP. Time to update the Modal, and past workshops. The most important thing is to find the datat related to workshops. Since I just received the names of the workshops, I'll be going to their LinkedIn to search for content related to speaker as well as the workshop description. 
+
+##### 3:30
+Finally updated the workshop data. To get all the information was a tough job along with some UI fixes. Although I did just encountered another bug. The modal can be closed easily on the PC by clicking the backdrop but on mobile phones, the backdrop is not visible, so there is a need for a close button. I'll just reuse the `add-calender` icon and rotate it to look like a cross.
+
+##### 4:00
+Took some time to position the button in the modal with some position hacks, DAMN! But it's finally done.
+
+> Time for sleep after I watch some Lucifer!
+
+##### 22:30
+Let's start today's [Leetcode challenge](https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3631/). The question seems to be pretty simple. The appraoch is to maintain a vector that stores the distance from left, and then use that to find whether the distance is minimum from left or right, and by how much.
+
+```cpp:title=shortest-distance-to-a-character.cpp
+vector<int> shortestToChar(string s, char c) {
+    int a = 100000;
+    vector<int> left, right(s.length(), 0);
+    for (int i = 0; i < s.length(); i++) {
+        a++;
+        if (s[i] == c) {
+            a = 0;
+        }
+        left.push_back(a);
+    }
+    a = 100000;
+    for (int i = s.length() - 1; i >= 0; i--) {
+        a++;
+        if (s[i] == c) {
+            a = 0;
+        }
+        right[i] = min(a, left[i]);
+    }
+
+    return right;
+}
+```
+
+The complexity is `O(N)` and space complexity is `O(N)` where `N` is the length of the string.
+
+> Bye!
+
+### EOD Checklist
+- [x] Leetcode February Challenge
+- [x] This blog

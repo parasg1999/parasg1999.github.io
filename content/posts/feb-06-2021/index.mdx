@@ -1,0 +1,44 @@
+---
+title: Feb 6 - Daily Programming Diary
+date: 2021-02-06
+tags:
+  - Diary
+  - Programming
+---
+
+##### 14:00
+Let's start today's [Leetcode challenge](https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3630/). It looks a bit weird, the question doesn't seem to provide appropriate information.
+
+My approach is to traverse the right path and printing it in order. Now this approach seems to be wrong and I can unserstand why. "Standing on the right" of the tree means seeing the tree from the right and seeing the first node that's in front. So I need to travserse the tree using preorder traversal and store the node values on left tree with their heights, and if a node exists to it's right on the same level, update the value.
+
+```cpp:title=binary-tree-right-side-view.cpp
+map<int, int> m;
+
+void traverse(TreeNode *root, int height) {
+    if (!root) return;
+
+    m[height] = root->val;
+    traverse(root->left, height + 1);
+    traverse(root->right, height + 1);
+}
+
+vector<int> rightSideView(TreeNode *root) {
+    traverse(root, 0);
+
+    vector<int> v;
+
+    for (auto a : m) {
+        v.push_back(a.second);
+    }
+
+    return v;
+}
+```
+
+The complexity is `O(N)` and space complexity is `O(N)` where `N` is the number of nodes in the tree.
+
+> Bye!
+
+### EOD Checklist
+- [x] Leetcode February Challenge
+- [x] This blog
