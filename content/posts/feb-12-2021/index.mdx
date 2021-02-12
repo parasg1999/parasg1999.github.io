@@ -1,0 +1,50 @@
+---
+title: Feb 12 - Daily Programming Diary
+date: 2021-02-12
+tags:
+  - Diary
+  - Programming
+---
+
+##### 16:30
+
+Heya! I'm back here. At least for today.
+Since I am using i3wm, and there is no notification for when the battery is low, I think I need to do something about it. 
+I just got my battery replaced, and it's imperative that I fix my charging habits.
+
+So I'm making a script to notify me when the battery is low and I can work without thinking about it, or having my laptop plugged in 24/7.
+
+##### 17:30
+Done! Okay, it is working but I just realised that I need some mechanism to shut it up just in case I'm sharing screen or giving a presentation somewhere. So there needs to be a flag somewhere. 
+
+The issue is that since the process will most probably be running at system startup, there is no way for the user to actually interact with the backgroung process that it will become. So I am making another script that will be a multipurpose util script to manage flags in separate files.
+
+##### 18:00
+
+Now whenever you plug in the charger, the notification will reset so that you don't have to toggle it manually again and again. The user can just run `gotcha power` and system will not show any notification related to battery being low, except at 5% when I think it's critically low. :p
+
+The script can be found [here](https://github.com/parasg1999/Scripts).
+
+##### 19:00
+Completed today's [Leetcode Challenge](https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/585/week-2-february-8th-february-14th/3637/)
+
+```cpp:title=number-of-steps.cpp
+int numberOfSteps(int num) {
+    int ans = 0;
+    while (num != 0) {
+        ans++;
+        if (num & 1) {
+            num--;
+        } else {
+            num = num >> 1;
+        }
+    }
+    return ans;
+}
+```
+
+> Good night!
+
+### EOD Checklist
+- [x] Leetcode February Challenge
+- [x] This blog
