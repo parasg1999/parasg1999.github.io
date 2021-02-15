@@ -1,0 +1,108 @@
+---
+title: Feb 15 - Daily Programming Diary
+date: 2021-02-15
+tags:
+  - Diary
+  - Programming
+---
+
+##### 2:00
+This seems to be getting a lot infrequent but I started learning Kotlin for Android Development. For now, let's complete the [Leetcode Challenge](https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/585/week-2-february-8th-february-14th/3639/). THe question is a graph coloring problem where the two in an edge have to be of different colors.
+
+The question has a very straightforward approach. Pick a node, color it with one of the colors, and paint its neighbors with the other color, and continue this till all the nodes are colored. If by any change the graph is a disconnected one, check for the queue empty condition and see if there are any unvisited nodes.
+
+```cpp:title=is-graph-bipartite.cpp
+bool isBipartite(vector<vector<int>> &graph) {
+    vector<int> m(graph.size(), -1);
+
+    m[0] = 1;
+    queue<int> q;
+    q.push(0);
+
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+
+        for (auto a : graph[u]) {
+            if (m[a] == -1) {
+                m[a] = 1 - m[u];
+                q.push(a);
+            } else if (m[a] == m[u]) return false;
+        }
+
+        if (q.empty()) {
+            for (int i = 0; i < m.size(); i++) {
+                if (m[i] == -1) {
+                    m[i] = 1;
+                    q.push(i);
+                    break;
+                }
+            }
+        }
+    }
+
+    return true;
+}
+```
+
+Time complexity `O(n)` where `n` is the number of nodes in the graph. Space complexity is `O(n)` if the first node connects to all the other nodes.
+
+##### 5:00
+Since my root partition in Ubuntu was running out of disk space and was causing a lot of issues, I had to reinstall Ubuntu. So I backed up all the important config files to get started ASAP. 
+
+I am thinking about creating a git repository with all the necessary files, so that I can get started even if I don't have the backup physically available.
+
+##### 7:00
+The setup procedure of Android studio took a while with all the installing that had to be done. But finally it is working and I can start by learning the syntax of Kotlin and then making some basic stuff. What I would love though is making a replica of SayInEditor with Kotlin. 
+
+> Time for some sleep!
+
+##### 13:00
+I have to make a Schedule section for the HackOn website and the design was given by haxzie this morning only. Since there is no schedule currently, this section won't be published right away and I have a lot of time to get it done.
+
+Let's start and see what issues arise. The most important thing that I have learned while working on this project is the `dispaly: flex` and probably will never forget it, so that's a good thing.
+
+##### 14:00
+I am done with the basic UI for the section but still have to make it responsive. The only issue right now is that the design will not look very good on mobile devices. So I'm thinking about removing the `more details` button on mobile phones and making the image smaller. 
+
+For now, I'll push it in a separate branch since it is not required until the schedule is decided.
+
+##### 20:00
+Back to work! I think it's time to take a look at today's [Leetcode challenge](https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/586/week-3-february-15th-february-21st/3641/).
+
+The approach is just counting the number of ones in each row and the inserting the `pair<ones, index>` in the min heap. After that, all that's left to do is to get k minimum elements from the heap.
+
+```cpp:title=k-weakest-rows.cpp
+vector<int> kWeakestRows(vector<vector<int>> &mat, int k) {
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+    for (int i = 0; i < mat.size(); i++) {
+        int ones = 0;
+        for (auto j : mat[i]) {
+            if (j == 1) ones++;
+            else break;
+        }
+        pq.push(make_pair(ones, i));
+    }
+
+    vector<int> ans;
+    while (k--) {
+        pair<int, int> tp = pq.top();
+        ans.push_back(tp.second);
+        pq.pop();
+    }
+
+    return ans;
+}
+```
+
+Time complexity `O(m*n)` where m and n are the number of rows and solumns respectively. Space complexity is `O(m)` to store in `priority_queue`. 
+
+##### 21:00
+Made the Hackon Website Schedule section responsive and pushed. Will have to deploy on netlify manually.
+
+> Good night!
+
+### EOD Checklist
+- [x] Leetcode February Challenge
+- [x] This blog
