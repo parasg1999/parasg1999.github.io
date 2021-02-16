@@ -1,0 +1,75 @@
+---
+title: Feb 16 - Daily Programming Diary
+date: 2021-02-16
+tags:
+  - Diary
+  - Programming
+---
+
+##### 3:00
+HackOn deployment is done on netlify. I didn't want to install it as a GitHub application for the organization so I'm glad someone else did. 
+I also got an official HackOn E-Mail account. 🎉
+
+##### 4:00
+There need to be a lot of minor changes in the HackOn website and the most challenging would be to make `mailto` tags click to copy with a popover.
+
+The process should be simple though. It just needs some CSS properties when hovered, and then change the text dynamically when clicked.
+
+##### 5:00
+Made the other changes as well to the meta data, and explored the `dev.to` store for stickers! 😛  
+Yes, I got a pack (thanks to Rishabh). 😬
+
+> Time to take a break!
+
+##### 13:00
+Starting some other changes to the website. Need to change the look of the `New Sponsorship` block. It looks like it has to be ignored by the viewers right now.
+
+> Break for Valorant! Been a while!
+
+##### 16:00
+Starting today's [Leetcode challenge](https://leetcode.com/explore/featured/card/february-leetcoding-challenge-2021/586/week-3-february-15th-february-21st/3642/). The problem looks simple, to toggle each and every alphabet to it's uppercase and lowercase form.
+
+The approach that I decided to go with
+1. Iterate over the string
+2. If character is an alphabet
+3. Check all the previous strings made for that character and toggle it to make new string.
+
+```cpp:title=letter-case-permutation.cpp
+vector<string> letterCasePermutation(string S) {
+    vector<string> v;
+    v.push_back(S);
+
+    for (int i = 0; i < S.length(); i++) {
+        if (isdigit(S[i])) continue;
+        
+        int sz = v.size();
+        for (int j = 0; j < sz; j++) {
+            string t = v[j];
+            if (t[i] == S[i]) {
+                if (isupper(t[i]))
+                    t[i] = tolower(t[i]);
+                else if (islower(t[i]))
+                    t[i] = toupper(t[i]);
+                v.push_back(t);
+            }
+        }
+    }
+    return v;
+}
+```
+
+Time complexity is `O(2^n)` and space complexity `O(2^n)` where `n` is the length of the string.
+
+##### 21:00
+Have to get the "Scroll to Top" button working but unable to get the event listener working. 
+
+##### 23:40
+After bashing my head around for approximately 3 hours, I finally figured it out. Turns out the window, or body was never scrolling. Instead, the comtainer was scrolling so the listener had to be added to that. Phew! 👏
+
+Okay, so I'm finally pushing that, and I need rest for now!
+
+> Until tomorrow! ^-^
+
+### EOD Checklist
+- [x] Leetcode February Challenge
+- [x] This blog
