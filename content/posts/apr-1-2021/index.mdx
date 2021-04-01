@@ -1,0 +1,90 @@
+---
+title: April 1 - Daily Programming Diary
+date: 2021-04-01
+tags:
+  - Diary
+  - Programming
+---
+
+##### 17:00
+Wow, I've been inactive! Have put on some weight as well but motivated to start this again. It's a new month so let's go with Leetcode [Question of the day](https://leetcode.com/explore/featured/card/april-leetcoding-challenge-2021/593/week-1-april-1st-april-7th/3693/).
+The question is to check whether the Linked List is a palindrome.
+
+The first approach is to push everything in stack and then iterate over the list again to check if the reverse of the list matches with the original.
+
+I've been rusty and I think the best way to reach that _"follow up"_ to do it in `O(n)` time and `O(1)` space, is to first implement this approach and think what can be improved.  
+
+```cpp:title=palindrome-linked-list-using-stack.cpp
+bool isPalindrome(ListNode *head) {
+    stack<int> s;
+    ListNode *temp = head;
+
+    while (temp) {
+        s.push(temp->val);
+        temp = temp->next;
+    }
+
+    while (head) {
+        if (s.top() != head->val)
+            return false;
+
+        s.pop();
+        head = head->next;
+    }
+
+    return true;
+}
+```
+
+The above method has time and space complexity both as `O(n)`.
+
+##### 17:30
+The next approach is to reverse the 2nd half of the list, and the check if both the halves are equal (barring the middle element in a list with odd elements).
+
+```cpp:title=palindrome-linked-list-using-reverse.cpp
+ListNode *reverseList(ListNode *head) {
+    ListNode *prev = NULL, *curr = head, *next = NULL;
+
+    while (curr) {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    return prev;
+}
+
+bool isPalindrome(ListNode *head) {
+    ListNode *slow = head, *fast = head;
+    ListNode *mid = NULL;
+
+    // return true if only one node
+    if (head->next == NULL) return true;
+
+    while (fast && fast->next) {
+        fast = fast->next->next;
+        mid = slow;
+        slow = slow->next;
+    }
+
+    if (fast) slow = slow->next;
+
+    slow = reverseList(slow);
+
+    while (slow && head) {
+        if (slow->val != head->val) return false;
+        slow = slow->next;
+        head = head->next;
+    }
+
+    return true;
+}
+```
+
+The complexity of this approach is `O(n)` time and `O(1)` space.
+
+
+### EOD Checklist
+- [x] Leetcode February Challenge
+- [x] This blog
