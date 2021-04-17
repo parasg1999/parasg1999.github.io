@@ -1,44 +1,49 @@
 ---
-title: April 6 - Daily Programming Diary
-date: 2021-04-06
+title: April 9 - Daily Programming Diary
+date: 2021-04-09
 tags:
   - Diary
   - Programming
 ---
 
-##### 9:00
-I have to work on the _Talk to professional_ feature on the Raahee website and have a deadline to stick to.
-I'll just be creating a bad UI for now with a list of professionals and then a chat box.
+##### 5:40
+Okay, I have to make some changes to the anonymous messaging system. The people who haven't got any reply to them have to be given a reply by the Admin. So that needs some brain storming.
+First I need to review the code I wrote at that time and see where the changes have to be made. 
 
-##### 11:00
-Okay! Been hammering my keyboard, _Googling_ for possible errors, and banging my head on the wall for the last 2 hours only to realise that the Auth token is invalid, and that the server documentation is crap.
-My head hurts. 
+##### 6:20
+I reviewed the code and fixed some things before I think about getting started on the feature. I added Redux selector in the Ananymous portal so thst it loads faster depending on whether the user is admin or not. I also made the admin checking more concise on other parts of the app with the `?.` selector. Nice!
+Finally, I'll just be getting all the messages as soon as they are being typed and then as soon as a message gets a reply, I'll grey it out / move to the bottom I guess / remove from the list? Let's see.
 
-But, on the flip side, majority of the work is done. The socket object is provided by the React context API for each component, making it easy for reusing single instance. The connect code is working alright, and the listeners have been added. The only thing left to do is possibly to integrate the _Razorpay_ before payment, and making a call to MHP.
+##### 7:40
+Okay, I'm done
+So I changed the implementation on the replies page. 
 
-> I'ma take a break now.
+- The admin by deafult sees the people that haven't received a reply.
+- The admin can select a person from the list and their worry gets displayed.
+- Admin can reply to them using the same mechanism as the user reply.
 
-##### 12:00
-Okay, yeah. Server code needs to be changed to work with React. :facepalm:  
-Turns out, the default transport used when making a `socket-io` request is _websocket_ and sending `extraHeaders` is not possible. WOW!
+Though I cleaned up the code a lot, there is still some scope of improvement on the user side. The subscriptions can be done at one place so if the user is far behind in the process, the session gets disconneted, otherwise I think it can create problems like one person extra in the queue which is not desirable.
 
-##### 12:30
-While waiting for the server code to update, I am currently testing in Firefox. I was able to establish the connection and was able to finally listen to socket events. Phew!
+> Break
 
-##### 13:00
-Turns out the server is not doing what the documentation says at all. The features have not been pushed to the server and I'm expected to use them to build the app. 
+##### 20:00
+Okay, cross browser integration for multiple admins. That might be cool. 
+How would I go about accomplishing that??
 
-##### 14:00
-Started the development server to do the work quickly. Done with the basic requests to send requests and cancel.
+- Create a button to join an existing room
+- Depending on the room status, show the desired panel
+- The original admin may get out of sync due to the ctions taken by the other one, so will need database listeners on each side to listen for changes.
 
-##### 15:00
-Things got a little of of hand when trying to test the app with the MHP side of socket. At first, I thought and I wanna curse myself for that, that since the database is shared, the sockets would be shared. Of course that isn't true!
+##### 21:40
 
-Anyway, when I changed the the sample code to the `ngrok` server. Everything worked. Now all there's left to do is the chat feature. That would be easy. Just listen for the messages and check if the message was sent by the current user or the other user, and display accordingly. Yay!
+![later that night](./later-that-night.png)
 
-Will fix the minor things when integrating the frontend since it's bound to break stuff. Let's see.
+So I decided to get started with the UI for talking to MHP. I have no idea where to get started, since there is just one MHP on server.
 
-> Time for a break
+##### 22:20
+Okay, there was an issue with the new component where the prop was not being read :/  
+I wanna bang my head on the wall for that, but I forgot to destructure the props, uff my thinking capacity is gone :facepalm
+
 
 ### EOD Checklist
 - [x] Raahee
