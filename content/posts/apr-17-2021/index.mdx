@@ -1,0 +1,116 @@
+---
+title: April 17 - Daily Programming Diary
+date: 2021-04-17
+tags:
+  - Diary
+  - Programming
+---
+
+##### 12:30
+I started with today's [Leetcode Challenge](https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/595/week-3-april-15th-april-21st/3710/).
+The question is to remove `k` identical consecutive letters from a string till it's no longer possble.
+
+The approach that I took is with stack and to store the counter, the stack is modifie to be a stack of pairs.
+
+```cpp:title=remove-all-adjacent-duplicates-in-string-ii.cpp
+string removeDuplicates(string s, int k) {
+    stack<pair<char, int>> stk;
+
+    for (auto c : s) {
+        if (stk.empty()) {
+            stk.push(make_pair(c, 1));
+        } else {
+            pair<char, int> temp = stk.top();
+            if (temp.first == c) {
+                if (temp.second == k - 1) stk.pop();
+                else {
+                    stk.pop();
+                    stk.push(make_pair(c, temp.second + 1));
+                }
+            } else {
+                stk.push(make_pair(c, 1));
+            }
+        }
+    }
+
+    string ans = "";
+    while (!stk.empty()) {
+        pair<char, int> temp = stk.top();
+        for (int i = 0; i < temp.second; i++) {
+            ans = temp.first + ans;
+        }
+        stk.pop();
+    }
+
+    return ans;
+}
+```
+
+##### 16:20
+Trying the question for [11th April](https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/594/week-2-april-8th-april-14th/3704/).
+
+The simplest approach would be to calculate the depth of the tree and then iterate the tree for the second time and adding the nodes at the level. It would take two iterations.
+
+The next approach could be to store all the levels along with their sums in a map and then finding the sum associated with the maximum value. This would mean just a single itearion over the tree.
+
+```cpp:title=deepest-leaves-sum-with-map.cpp
+unordered_map<int, int> umap;
+
+void traverse(TreeNode *root, int level) {
+    if (!root) return;
+
+    umap[level] += root->val;
+
+    traverse(root->left, level + 1);
+    traverse(root->right, level + 1);
+}
+
+int deepestLeavesSum(TreeNode *root) {
+    traverse(root, 0);
+
+    int mx = 0;
+
+    for (auto a : umap) {
+        mx = max(a.first, mx);
+    }
+
+    return umap[mx];
+}
+```
+
+The next approach is to find the maximum depth value as we traverse, and then calculating the sum according to that.
+
+```cpp:title=deepest-leaves-sum-with-one-iteration.cpp
+int deepestLevel = 0, sum = 0;
+
+void traverse(TreeNode *root, int level) {
+    if (!root) return;
+
+    if (level > deepestLevel) {
+        deepestLevel = level;
+        sum = 0;
+    }
+
+    if (level == deepestLevel) {
+        sum += root->val;
+    }
+
+    traverse(root->left, level + 1);
+    traverse(root->right, level + 1);
+}
+
+int deepestLeavesSum(TreeNode *root) {
+    traverse(root, 0);
+
+    return sum;
+}
+```
+
+##### 21:30
+
+> Okay, done for the day! Bye.
+
+### EOD Checklist
+- [x] Raahee
+- [x] Leetcode April Challenge
+- [x] This blog
