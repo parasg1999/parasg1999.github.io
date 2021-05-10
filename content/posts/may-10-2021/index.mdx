@@ -1,0 +1,71 @@
+---
+title: May 10 - Daily Programming Diary
+date: 2021-05-10
+tags:
+  - Diary
+  - Programming
+---
+
+##### 2:00
+I setup calendso for Raahee yesterday and I find some shortcomings with it.
+- [ ] There is no integration for multiple calendars.
+- [x] The slots shown don't check for overlaps which can lead to double booking,
+
+While the multiple calendar thing is not that important, the double booking thing is a critical issue that needs to be resolved ASAP, or else this doesn't really matter.
+
+I'll first have to understand the architecture and maybe I can make a PR for that afterwards.
+
+##### 2:30
+Okay, so I figured the overlapping issue and have created a PR [#180](https://github.com/calendso/calendso/pull/180).
+The reason why this bug was occuring is that the slots are being generated before the schedule is being checked, and the slot end times were not being checked at all.
+
+##### 3:00
+Another bug regarding overlaps is that if my schedule is booked for sometime between the slot, then the slot would be considered for booking. Have updated the PR to consider this case as well.
+
+##### 4:00
+After triaging the PRs and issues, I think I want to contribute more to the project.
+
+> For now, it's time to get some rest. 
+
+##### 12:00
+Started working on the `AdminBlogPage` and looking for the API for uploading a singular image. Looks like it hasn't been made yet, so that's blocking right now.
+
+##### 13:00
+Okay, so till the blog thing gets figured out, I'll work on the HackOn website. Need to make a new page for the prizes.
+
+##### 16:00
+Wow, this took 3 hours!!? That's a lot. But then again, I had to fix the things that were not working with the existing prize section as well.
+
+ALSO, I GOT MY FIRST PR MERGED IN CALENDSO. ❤️
+
+> Break!
+
+##### 17:30
+Writing the contribution guidelines for Raahee (basically for new people who join the team). Hopefully be finished before sleeping tonight.
+
+##### 18:15
+Done with all the changes on the HackOn prizes page. Took a lot of time and the weird thing is that I have to ask for feedback from multiple people and not even in the group 🤦‍♂️
+
+##### 18:30
+New requirement: The prizes card should be hoverable so that the additional information can be shown. Getting started on that now.
+
+##### 21:00
+Took me 2 and a half hours to implement hover on just the Amagi and Elastic prizes but it should be relatively easier now. 🤞
+
+> Dinner time. 
+
+##### 22:00
+Started working on the prizes section again to add hover effect to the other components as well. This is really difficult since all the components are relatively different and I'm kinda frustrated right now.
+
+##### 22:45
+Okay, so I've added the hover to SAWO, Polygon and other Magic sponsors.
+
+Still haven't received the single image upload API from the server team. This is just too much. 😩
+
+> I think I'm done for the day. Will complete the other card hovers tomorrow.
+
+### Summary
+1. Contributed to calendso
+2. Made `/prizes` page in HackOn
+3. Migrated `AdminBlogPage` to server for Raahee
+4. 
