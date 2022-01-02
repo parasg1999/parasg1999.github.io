@@ -8,9 +8,9 @@ tags:
 
 ##### 12:30
 I started with today's [Leetcode Challenge](https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/595/week-3-april-15th-april-21st/3710/).
-The question is to remove `k` identical consecutive letters from a string till it's no longer possble.
+The question is to remove `k` identical consecutive letters from a string till it's no longer possible.
 
-The approach that I took is with stack and to store the counter, the stack is modifie to be a stack of pairs.
+The approach that I took is with stack and to store the counter, the stack is modified to be a stack of pairs.
 
 ```cpp:title=remove-all-adjacent-duplicates-in-string-ii.cpp
 string removeDuplicates(string s, int k) {
@@ -51,7 +51,7 @@ Trying the question for [11th April](https://leetcode.com/explore/challenge/card
 
 The simplest approach would be to calculate the depth of the tree and then iterate the tree for the second time and adding the nodes at the level. It would take two iterations.
 
-The next approach could be to store all the levels along with their sums in a map and then finding the sum associated with the maximum value. This would mean just a single itearion over the tree.
+The next approach could be to store all the levels along with their sums in a map and then finding the sum associated with the maximum value. This would mean just a single iteration over the tree.
 
 ```cpp:title=deepest-leaves-sum-with-map.cpp
 unordered_map<int, int> umap;

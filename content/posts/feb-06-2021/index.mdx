@@ -9,7 +9,7 @@ tags:
 ##### 14:00
 Let's start today's [Leetcode challenge](https://leetcode.com/explore/challenge/card/february-leetcoding-challenge-2021/584/week-1-february-1st-february-7th/3630/). It looks a bit weird, the question doesn't seem to provide appropriate information.
 
-My approach is to traverse the right path and printing it in order. Now this approach seems to be wrong and I can unserstand why. "Standing on the right" of the tree means seeing the tree from the right and seeing the first node that's in front. So I need to travserse the tree using preorder traversal and store the node values on left tree with their heights, and if a node exists to it's right on the same level, update the value.
+My approach is to traverse the right path and printing it in order. Now this approach seems to be wrong and I can understand why. "Standing on the right" of the tree means seeing the tree from the right and seeing the first node that's in front. So I need to traverse the tree using preorder traversal and store the node values on left tree with their heights, and if a node exists to it's right on the same level, update the value.
 
 ```cpp:title=binary-tree-right-side-view.cpp
 map<int, int> m;

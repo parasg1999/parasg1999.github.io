@@ -44,14 +44,14 @@ So, the approach right?
 I am maintaining a vector `efforts` regarding the efforts (cost) to be put to go to a particular node.
 Then inserting into set based on distance to get the minimum distance node. The vector `visited` tells whether the particular node has already been visited so as not to be stuck inside an infinite loop.
 
-So after getting the minimum distance node, check the neighbours and update their efforts if the current node is a better way to reach that node.
+So after getting the minimum distance node, check the neighbors and update their efforts if the current node is a better way to reach that node.
 
 Then update `min_dist` which stores the maximum of the minimum distance that need to be traversed at that point of time.
 
 **Problems faced**
 - I was updating visited as soon as I inserted anything into the set, instead it should've been done when erasing it from set.
-- Updating `min_dist` as soon as I track the neighbours but it checks the `visited` property and then messes up the whole set.
-- Returning too early - As soon as the target node was removed from the set, I returned without giving the chance to actually update the `min_dist`. This is the part which is still a bit cloudy but it's probably because I'm not visiting a node until I track it's neighbours.
+- Updating `min_dist` as soon as I track the neighbors but it checks the `visited` property and then messes up the whole set.
+- Returning too early - As soon as the target node was removed from the set, I returned without giving the chance to actually update the `min_dist`. This is the part which is still a bit cloudy but it's probably because I'm not visiting a node until I track it's neighbors.
 This is related to the 2<sup>nd</sup> issue.
 
 ```cpp:title=path-with-minimum-effort.cpp

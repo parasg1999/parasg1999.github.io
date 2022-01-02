@@ -11,18 +11,18 @@ Okay, I have to make some changes to the anonymous messaging system. The people 
 First I need to review the code I wrote at that time and see where the changes have to be made. 
 
 ##### 6:20
-I reviewed the code and fixed some things before I think about getting started on the feature. I added Redux selector in the Ananymous portal so thst it loads faster depending on whether the user is admin or not. I also made the admin checking more concise on other parts of the app with the `?.` selector. Nice!
-Finally, I'll just be getting all the messages as soon as they are being typed and then as soon as a message gets a reply, I'll grey it out / move to the bottom I guess / remove from the list? Let's see.
+I reviewed the code and fixed some things before I think about getting started on the feature. I added Redux selector in the Anonymous portal so that it loads faster depending on whether the user is admin or not. I also made the admin checking more concise on other parts of the app with the `?.` selector. Nice!
+Finally, I'll just be getting all the messages as soon as they are being typed and then as soon as a message gets a reply, I'll gray it out / move to the bottom I guess / remove from the list? Let's see.
 
 ##### 7:40
 Okay, I'm done
 So I changed the implementation on the replies page. 
 
-- The admin by deafult sees the people that haven't received a reply.
+- The admin by default sees the people that haven't received a reply.
 - The admin can select a person from the list and their worry gets displayed.
 - Admin can reply to them using the same mechanism as the user reply.
 
-Though I cleaned up the code a lot, there is still some scope of improvement on the user side. The subscriptions can be done at one place so if the user is far behind in the process, the session gets disconneted, otherwise I think it can create problems like one person extra in the queue which is not desirable.
+Though I cleaned up the code a lot, there is still some scope of improvement on the user side. The subscriptions can be done at one place so if the user is far behind in the process, the session gets disconnected, otherwise I think it can create problems like one person extra in the queue which is not desirable.
 
 > Break
 
@@ -32,7 +32,7 @@ How would I go about accomplishing that??
 
 - Create a button to join an existing room
 - Depending on the room status, show the desired panel
-- The original admin may get out of sync due to the ctions taken by the other one, so will need database listeners on each side to listen for changes.
+- The original admin may get out of sync due to the actions taken by the other one, so will need database listeners on each side to listen for changes.
 
 ##### 21:40
 

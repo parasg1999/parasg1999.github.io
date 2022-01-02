@@ -17,7 +17,7 @@ I'll first have to understand the architecture and maybe I can make a PR for tha
 
 ##### 2:30
 Okay, so I figured the overlapping issue and have created a PR [#180](https://github.com/calendso/calendso/pull/180).
-The reason why this bug was occuring is that the slots are being generated before the schedule is being checked, and the slot end times were not being checked at all.
+The reason why this bug was occurring is that the slots are being generated before the schedule is being checked, and the slot end times were not being checked at all.
 
 ##### 3:00
 Another bug regarding overlaps is that if my schedule is booked for sometime between the slot, then the slot would be considered for booking. Have updated the PR to consider this case as well.
