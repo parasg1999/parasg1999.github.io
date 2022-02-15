@@ -1,10 +1,10 @@
 require(`dotenv`).config({
   path: `.env`,
-})
+});
 
 module.exports = {
   siteMetadata: {
-    siteTitle: 'Paras Gupta',
+    siteTitle: "Paras Gupta",
     siteTitleAlt: `Paras Gupta - Blog`,
     siteHeadline: "Paras Gupta - Blog",
     siteUrl: "https://parasg1999.github.io", // No trailing slash allowed!
@@ -23,10 +23,6 @@ module.exports = {
           {
             title: `Blog`,
             slug: `/blog`,
-          },
-          {
-            title: `About`,
-            slug: `/about`,
           },
         ],
         externalLinks: [
@@ -75,11 +71,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-adsense`,
       options: {
-        publisherId: `ca-pub-7520901376123661`
+        publisherId: `ca-pub-7520901376123661`,
       },
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-netlify`,
-    'gatsby-plugin-sass',
+    "gatsby-plugin-sass",
   ],
-}
+};
