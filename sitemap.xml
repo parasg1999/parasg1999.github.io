@@ -3,9 +3,6 @@
 <url> <loc>https://parasg1999.github.io/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/blog</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/tags</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://parasg1999.github.io/jan-5-daily-diary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://parasg1999.github.io/jan-4-daily-diary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://parasg1999.github.io/jan-2-daily-diary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/may-11-daily-programming-diary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/may-10-daily-programming-diary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/april-17-daily-programming-diary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -52,7 +49,6 @@
 <url> <loc>https://parasg1999.github.io/jan-1-daily-programming-diary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/fantastic-beasts-and-where-to-find-them</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/markdown-example</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://parasg1999.github.io/about</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/tags/crio-do</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/tags/diary</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://parasg1999.github.io/tags/example</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>

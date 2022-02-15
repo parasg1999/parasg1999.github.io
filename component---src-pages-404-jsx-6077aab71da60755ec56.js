@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{"4z4a":function(n,o,c){},pssB:function(n,o,c){"use strict";c.r(o);var t=c("2A+t");c("4z4a");o.default=function(){return Object(t.c)("div",{role:"button",className:"fourOhFour"},"404",Object(t.c)("br",null),Object(t.c)("button",{onClick:function(){window.location.replace("/")}},"Go Home"))}}}]);
+//# sourceMappingURL=component---src-pages-404-jsx-6077aab71da60755ec56.js.map
